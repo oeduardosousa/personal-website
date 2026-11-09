@@ -21,7 +21,10 @@
     "language": {
       "code": "PT",
       "label": "Ler em português"
-    }
+    },
+    "menu": "Menu",
+    "close": "Close",
+    "theme": "Switch theme"
   },
   "hero": {
     "role": "I build websites and interactive systems.",
@@ -45,7 +48,12 @@
     ],
     "tools": {
       "label": "Tools I use",
-      "list": ["GitHub", "VS Code", "Cloudflare", "Claude Code"],
+      "list": [
+        "GitHub",
+        "VS Code",
+        "Cloudflare",
+        "Claude Code"
+      ],
       "todo": "[TODO] Confirm which languages and stacks I claim (JavaScript, React, Python, C, HTML)."
     }
   },
@@ -75,8 +83,11 @@
     "buttons": {
       "email": "Email",
       "linkedin": "LinkedIn",
-      "github": "GitHub"
-    }
+      "github": "GitHub",
+      "copy": "Copy email"
+    },
+    "copied": "Copied",
+    "copyFailed": "Could not copy"
   },
   "footer": {
     "line": "[TODO] One opinionated sentence, to write with Eduardo.",

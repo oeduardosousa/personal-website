@@ -65,3 +65,12 @@ Notes:
 ## Open gaps
 
 `npm run check:content` lists every open `[TODO]` (copy and projects). Gaps are never filled with invented text.
+
+## Motion
+
+Follows the Motion section of `DESIGN.md`. Only `transform` and `opacity` animate.
+
+- `src/scripts/hero.js`: hero intro (plays once, remembered in `localStorage`) and the kinetic name. GSAP core only, in the first load.
+- `src/scripts/scroll.js`: Lenis smooth scroll, ScrollTrigger, line-by-line heading reveals and the pinned work section. Loaded on idle or first interaction.
+- `gsap.matchMedia` splits desktop, phone and `prefers-reduced-motion`: phones get simple fades, reduced motion gets opacity-only fades and no smooth scroll.
+- The work section only pins when it fits the viewport; otherwise each project fades in as it arrives.

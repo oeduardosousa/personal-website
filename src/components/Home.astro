@@ -6,114 +6,165 @@ const { lang } = Astro.props;
 const t = getContent(lang);
 const projects = getProjects(lang);
 const other = otherLang(lang);
+const otherHtmlLang = other === "pt" ? "pt-BR" : "en";
 const mailto = `mailto:${t.links.email}?subject=${encodeURIComponent(t.contact.emailSubject)}`;
-const buildYear = new Date().getFullYear();
+const buildYear = new Date().getFullYear(); // no-JS fallback; site.js computes the real one
+const words = t.name.split(" ");
+
+// The best project gets twice the space. If none is flagged, the first entry leads.
+const flagged = projects.findIndex((p) => p.featured);
+const wideIndex = projects.length ? (flagged === -1 ? 0 : flagged) : -1;
+
+const navLinks = [
+  ["what-i-do", t.nav.whatIDo],
+  ["work", t.nav.work],
+  ["about", t.nav.about],
+  ["contact", t.nav.contact],
+];
 ---
 
 <Base lang={lang} meta={t.meta}>
   <a class="skip-link" href="#main">{t.nav.skip}</a>
 
-  <header class="site-header">
-    <div class="wrap">
+  <header class="site-header" data-header>
+    <div class="wrap site-header__bar">
       <a class="wordmark" href={paths[lang]}>{t.name}</a>
-      <nav aria-label={t.nav.label}>
+
+      <nav id="site-nav" class="site-nav" aria-label={t.nav.label} data-nav>
         <ul>
-          <li><a href="#what-i-do">{t.nav.whatIDo}</a></li>
-          <li><a href="#work">{t.nav.work}</a></li>
-          <li><a href="#about">{t.nav.about}</a></li>
-          <li><a href="#contact">{t.nav.contact}</a></li>
-          <li>
-            <a href={paths[other]} hreflang={other === "pt" ? "pt-BR" : "en"} lang={other === "pt" ? "pt-BR" : "en"} data-lang-toggle={other} aria-label={t.nav.language.label}>
-              {t.nav.language.code}
-            </a>
-          </li>
+          {navLinks.map(([id, label], i) => (
+            <li style={`--i:${i}`}><a href={`#${id}`}>{label}</a></li>
+          ))}
         </ul>
       </nav>
+
+      <div class="site-header__tools">
+        <a class="tool" href={paths[other]} hreflang={otherHtmlLang} lang={otherHtmlLang} data-lang-toggle={other} aria-label={t.nav.language.label}>
+          {t.nav.language.code}
+        </a>
+        <button class="tool tool--icon" type="button" data-theme-toggle aria-label={t.nav.theme}>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5"></circle>
+            <path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"></path>
+          </svg>
+        </button>
+        <button class="tool menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-btn>
+          <span class="menu-btn__open">{t.nav.menu}</span>
+          <span class="menu-btn__close">{t.nav.close}</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" aria-labelledby="hero-title" data-hero>
       <div class="wrap">
-        <h1 id="hero-title">{t.name}</h1>
-        <p class="hero__role">{t.hero.role}</p>
-        <p class="hero__note"><span class="todo">{t.hero.note}</span></p>
-        <p class="terminal" aria-label={t.hero.terminal.label}>
-          <span class="terminal__prompt" aria-hidden="true">&gt;</span>
-          <span data-terminal>{t.hero.terminal.fallback}</span>
-        </p>
+        <h1 id="hero-title" aria-label={t.name} data-kinetic>
+          <span aria-hidden="true">
+            {words.map((word, i) => (
+              <>
+                <span class="word">{[...word].map((ch) => <span class="ch">{ch}</span>)}</span>{i < words.length - 1 ? " " : ""}
+              </>
+            ))}
+          </span>
+        </h1>
+
+        <div class="hero__meta">
+          <div class="hero__lead">
+            <p class="hero__role">{t.hero.role}</p>
+            <p class="hero__note"><span class="todo">{t.hero.note}</span></p>
+          </div>
+          <p class="terminal" role="status" aria-label={t.hero.terminal.label}>
+            <span class="terminal__prompt" aria-hidden="true">&gt;</span>
+            <span class="terminal__text" data-terminal>{t.hero.terminal.fallback}</span>
+            <span class="caret" aria-hidden="true"></span>
+          </p>
+        </div>
       </div>
     </section>
 
-    <section id="what-i-do" aria-labelledby="what-i-do-title">
-      <div class="wrap">
-        <h2 id="what-i-do-title">{t.whatIDo.title}</h2>
-        <ul class="do-list">
-          {t.whatIDo.items.map((item) => (
-            <li>
-              <h3>{item.title}</h3>
-              <p class="measure">{item.text}</p>
-            </li>
-          ))}
-        </ul>
-        <div class="tools">
-          <p class="label muted">{t.whatIDo.tools.label}</p>
-          <ul>
-            {t.whatIDo.tools.list.map((tool) => <li class="tag">{tool}</li>)}
+    <section id="what-i-do" class="do" aria-labelledby="what-i-do-title">
+      <div class="wrap grid">
+        <h2 id="what-i-do-title" class="do__title" data-split>{t.whatIDo.title}</h2>
+        <div class="do__body">
+          <ul class="do-list">
+            {t.whatIDo.items.map((item) => (
+              <li data-reveal>
+                <h3>{item.title}</h3>
+                <p class="measure">{item.text}</p>
+              </li>
+            ))}
           </ul>
-          <p class="todo">{t.whatIDo.tools.todo}</p>
+          <div class="tools" data-reveal>
+            <p class="label muted">{t.whatIDo.tools.label}</p>
+            <ul>
+              {t.whatIDo.tools.list.map((tool) => <li class="tag">{tool}</li>)}
+            </ul>
+            <p class="todo">{t.whatIDo.tools.todo}</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="work" aria-labelledby="work-title">
+    <section id="work" class="work" aria-labelledby="work-title" data-work>
       <div class="wrap">
-        <h2 id="work-title">{t.work.title}</h2>
-        <p class="measure muted">{t.work.intro}</p>
+        <h2 id="work-title" data-split>{t.work.title}</h2>
+        <p class="work__intro measure muted">{t.work.intro}</p>
         <ul class="projects">
-          {projects.map((p) => (
-            <li id={`project-${p.id}`}>
-              {p.image && (
-                <figure>
-                  <img src={p.image.src} alt={p.image.alt} width="1600" height="1000" loading="lazy" decoding="async" />
-                </figure>
-              )}
-              <h3>{p.title}</h3>
-              <p class="measure">{p.summary}</p>
-              {p.tags.length > 0 && (
-                <ul class="tags">
-                  {p.tags.map((tag) => <li class="tag">{tag}</li>)}
-                </ul>
-              )}
-              <p class="links">
-                {p.links.repo && <a href={p.links.repo} rel="noopener">{t.work.links.repo}</a>}
-                {p.links.live && <a href={p.links.live} rel="noopener">{t.work.links.live}</a>}
-              </p>
-              {p.todo.length > 0 && <p class="todo">[TODO] {p.todo.join(", ")}</p>}
-            </li>
-          ))}
+          {projects.map((p, i) => {
+            const primary = p.links.live ?? p.links.repo;
+            return (
+              <li class:list={["project", { "project--wide": i === wideIndex }]} id={`project-${p.id}`}>
+                {p.image && (
+                  <figure>
+                    <img src={p.image.src} alt={p.image.alt} width="1600" height="1000" loading="lazy" decoding="async" />
+                  </figure>
+                )}
+                <h3>
+                  {primary ? <a href={primary} rel="noopener" tabindex="-1">{p.title}</a> : p.title}
+                </h3>
+                <p class="measure">{p.summary}</p>
+                {p.tags.length > 0 && (
+                  <ul class="tags">
+                    {p.tags.map((tag) => <li class="tag">{tag}</li>)}
+                  </ul>
+                )}
+                <p class="links">
+                  {p.links.repo && <a href={p.links.repo} rel="noopener">{t.work.links.repo}</a>}
+                  {p.links.live && <a href={p.links.live} rel="noopener">{t.work.links.live}</a>}
+                </p>
+                {p.todo.length > 0 && <p class="todo">[TODO] {p.todo.join(", ")}</p>}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
 
-    <section id="about" aria-labelledby="about-title">
-      <div class="wrap">
-        <h2 id="about-title">{t.about.title}</h2>
-        <div class="stack measure">
-          {t.about.paragraphs.map((text) => <p>{text}</p>)}
-          <p><span class="label muted">{t.about.outside.label}</span><br />{t.about.outside.text}</p>
+    <section id="about" class="about" aria-labelledby="about-title">
+      <div class="wrap grid">
+        <h2 id="about-title" class="about__title" data-split>{t.about.title}</h2>
+        <div class="about__body stack measure">
+          {t.about.paragraphs.map((text) => <p data-reveal>{text}</p>)}
+          <p data-reveal><span class="label muted">{t.about.outside.label}</span><br />{t.about.outside.text}</p>
         </div>
       </div>
     </section>
 
-    <section id="contact" aria-labelledby="contact-title">
+    <section id="contact" class="contact" aria-labelledby="contact-title">
       <div class="wrap">
-        <h2 id="contact-title">{t.contact.title}</h2>
-        <p class="buttons">
+        <h2 id="contact-title" data-split>{t.contact.title}</h2>
+        <p class="buttons" data-reveal>
           <a class="btn btn--primary" href={mailto}>{t.contact.buttons.email}</a>
           <a class="btn" href={t.links.linkedin} rel="noopener">{t.contact.buttons.linkedin}</a>
           <a class="btn" href={t.links.github} rel="noopener">{t.contact.buttons.github}</a>
+          <button class="btn btn--copy" type="button" data-copy={t.links.email} data-failed={t.contact.copyFailed} hidden>
+            <span class="btn__label">{t.contact.buttons.copy}</span>
+            <span class="btn__done" aria-hidden="true">{t.contact.copied}</span>
+          </button>
         </p>
+        <p class="label muted contact__email" data-reveal>{t.links.email}</p>
+        <p class="sr-only" aria-live="polite" data-copy-status></p>
       </div>
     </section>
   </main>
@@ -121,6 +172,11 @@ const buildYear = new Date().getFullYear();
   <footer class="site-footer">
     <div class="wrap">
       <p class="todo">{t.footer.line}</p>
+      <ul class="footer-links label">
+        <li><a href={mailto}>{t.contact.buttons.email}</a></li>
+        <li><a href={t.links.linkedin} rel="noopener">{t.contact.buttons.linkedin}</a></li>
+        <li><a href={t.links.github} rel="noopener">{t.contact.buttons.github}</a></li>
+      </ul>
       <p class="label muted">&copy; <span data-year>{buildYear}</span> {t.footer.rights}</p>
     </div>
   </footer>

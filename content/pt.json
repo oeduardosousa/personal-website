@@ -21,7 +21,10 @@
     "language": {
       "code": "EN",
       "label": "Read in English"
-    }
+    },
+    "menu": "Menu",
+    "close": "Fechar",
+    "theme": "Trocar tema"
   },
   "hero": {
     "role": "Eu faço sites e sistemas interativos.",
@@ -45,7 +48,12 @@
     ],
     "tools": {
       "label": "O que eu uso",
-      "list": ["GitHub", "VS Code", "Cloudflare", "Claude Code"],
+      "list": [
+        "GitHub",
+        "VS Code",
+        "Cloudflare",
+        "Claude Code"
+      ],
       "todo": "[TODO] Confirmar quais linguagens e stacks eu posso citar (JavaScript, React, Python, C, HTML)."
     }
   },
@@ -75,8 +83,11 @@
     "buttons": {
       "email": "E-mail",
       "linkedin": "LinkedIn",
-      "github": "GitHub"
-    }
+      "github": "GitHub",
+      "copy": "Copiar e-mail"
+    },
+    "copied": "Copiado",
+    "copyFailed": "Não consegui copiar"
   },
   "footer": {
     "line": "[TODO] Uma frase opinativa, para escrever com o Eduardo.",
