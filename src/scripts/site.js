@@ -102,3 +102,4 @@ function startScroll() {
   addEventListener(ev, startScroll, { passive: true, once: true }),
 );
 ("requestIdleCallback" in window ? requestIdleCallback : (fn) => setTimeout(fn, 300))(startScroll);
+setTimeout(startScroll, 2500); // safety net if idle never fires
