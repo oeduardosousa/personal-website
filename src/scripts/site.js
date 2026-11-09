@@ -51,6 +51,7 @@ function setMenu(open) {
 }
 btn?.addEventListener("click", () => setMenu(btn.getAttribute("aria-expanded") !== "true"));
 nav?.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
+$("[data-contact-link]")?.addEventListener("click", () => setMenu(false));
 addEventListener("keydown", (e) => {
   if (e.key === "Escape" && btn?.getAttribute("aria-expanded") === "true") { setMenu(false); btn.focus(); }
 });

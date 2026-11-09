@@ -35,6 +35,9 @@ h1 { font-size: var(--text-hero); font-weight: var(--weight-hero); line-height: 
 h2 { font-size: var(--text-headline); font-weight: var(--weight-headline); line-height: var(--leading-headline); letter-spacing: var(--tracking-display); }
 h3 { font-size: var(--text-title); font-weight: var(--weight-title); line-height: var(--leading-title); }
 
+h2, h3, .hero__role { text-wrap: balance; }
+p { text-wrap: pretty; }
+
 a { color: var(--color-accent-text); text-underline-offset: 4px; }
 a:hover { text-decoration-thickness: 2px; }
 
@@ -88,7 +91,7 @@ a:hover { text-decoration-thickness: 2px; }
   min-height: 64px;
 }
 .wordmark, .site-header__tools { position: relative; z-index: 2; } /* stay above the full-screen menu */
-.wordmark { display: inline-flex; align-items: center; min-height: var(--tap); color: var(--color-text); font-weight: var(--weight-title); text-decoration: none; }
+.wordmark { white-space: nowrap; display: inline-flex; align-items: center; min-height: var(--tap); color: var(--color-text); font-weight: var(--weight-title); text-decoration: none; }
 
 .site-nav ul { display: flex; flex-wrap: wrap; gap: 0 var(--space-6); }
 .site-nav a {
@@ -104,7 +107,7 @@ a:hover { text-decoration-thickness: 2px; }
   color: var(--color-text); text-decoration: none; border-radius: var(--radius-sm);
 }
 .tool:active { transform: scale(0.97); transition: transform var(--dur-press) var(--ease-out); }
-.menu-btn { display: none; }
+.menu-btn, .tool--contact, .nav-lang { display: none; }
 .menu-btn__close { display: none; }
 
 @media (max-width: 959px) {
@@ -112,7 +115,12 @@ a:hover { text-decoration-thickness: 2px; }
   .site-header__bar { flex-wrap: wrap; }
   .js .site-header__bar { flex-wrap: nowrap; }
   .js .site-header__tools { margin-left: auto; }
-  .js .menu-btn { display: inline-flex; }
+  .js .menu-btn, .js .tool--contact { display: inline-flex; }
+  .menu-btn { min-width: 60px; } /* "Menu" and "Fechar" swap without shifting the bar */
+  /* Room for the wordmark on 360px phones: the language link moves into the menu. */
+  .js .site-header__tools > [data-lang-toggle] { display: none; }
+  .js .nav-lang { display: list-item; margin-top: var(--space-6); }
+  .js .site-nav .nav-lang a { font-family: var(--font-mono); font-size: var(--text-label); font-weight: var(--weight-label); letter-spacing: var(--tracking-label); color: var(--color-text-muted); }
   .js .menu-btn[aria-expanded="true"] .menu-btn__open { display: none; }
   .js .menu-btn[aria-expanded="true"] .menu-btn__close { display: inline; }
 

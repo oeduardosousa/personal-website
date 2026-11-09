@@ -74,3 +74,11 @@ Follows the Motion section of `DESIGN.md`. Only `transform` and `opacity` animat
 - `src/scripts/scroll.js`: Lenis smooth scroll, ScrollTrigger, line-by-line heading reveals and the pinned work section. Loaded on idle or first interaction.
 - `gsap.matchMedia` splits desktop, phone and `prefers-reduced-motion`: phones get simple fades, reduced motion gets opacity-only fades and no smooth scroll.
 - The work section only pins when it fits the viewport; otherwise each project fades in as it arrives.
+
+## Dynamic layer
+
+Client-side only. No network calls, no tracking. Code in `src/scripts/dynamic.js` and `src/scripts/palette.js`; every string lives under `dynamic` in `content/en.json` and `content/pt.json`.
+
+- The terminal line compares the visitor's local time with Belo Horizonte (`America/Sao_Paulo`), remembers visits in `localStorage` (try/catch everywhere) and reacts to tab return and idle. "forget me" in the footer clears it.
+- `Ctrl/Cmd+K` opens the command palette (native `<dialog>`). Sections and projects are read from the page, so new projects show up automatically.
+- With JS off, the terminal shows one static sentence and JS-only controls stay hidden.

@@ -46,10 +46,14 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
           {navLinks.map(([id, label], i) => (
             <li style={`--i:${i}`}><a href={`#${id}`}>{label}</a></li>
           ))}
+          <li class="nav-lang" style={`--i:${navLinks.length}`}>
+            <a href={paths[other]} hreflang={otherHtmlLang} lang={otherHtmlLang} data-lang-toggle={other}>{t.nav.language.label}</a>
+          </li>
         </ul>
       </nav>
 
       <div class="site-header__tools">
+        <a class="tool tool--contact" href="#contact" data-contact-link>{t.nav.contact}</a>
         <a class="tool" href={paths[other]} hreflang={otherHtmlLang} lang={otherHtmlLang} data-lang-toggle={other} aria-label={t.nav.language.label}>
           {t.nav.language.code}
         </a>

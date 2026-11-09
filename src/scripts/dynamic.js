@@ -100,7 +100,7 @@ export function initDynamic(dyn) {
     el.replaceChildren(frag);
   }
   function renderBase() {
-    if (eventActive) return;
+    if (eventActive || el.contains(document.activeElement)) return; // do not yank a focused link
     try {
       const frag = baseLine();
       if (plain(frag) !== lastPlain) setLine(frag); // skip identical text: no churn every tick
