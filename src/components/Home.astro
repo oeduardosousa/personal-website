@@ -21,6 +21,17 @@ const navLinks = [
   ["about", t.nav.about],
   ["contact", t.nav.contact],
 ];
+
+// Everything the client-side dynamic layer needs, straight from content/*.json.
+const dyn = {
+  dynamic: t.dynamic,
+  sections: navLinks.map(([id, label]) => ({ id, label })),
+  sectionLabels: Object.fromEntries(navLinks.map(([id, label]) => [id, label])),
+  projects: projects.map((p) => ({ id: p.id, title: p.title })),
+  links: t.links,
+  mailto,
+};
+const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u003c"); // keep </script> out of the JSON block
 ---
 
 <Base lang={lang} meta={t.meta}>
@@ -42,6 +53,9 @@ const navLinks = [
         <a class="tool" href={paths[other]} hreflang={otherHtmlLang} lang={otherHtmlLang} data-lang-toggle={other} aria-label={t.nav.language.label}>
           {t.nav.language.code}
         </a>
+        <button class="tool palette-btn" type="button" data-palette-open aria-label={t.dynamic.palette.open} aria-keyshortcuts="Control+K Meta+K" hidden>
+          <span data-palette-key>Ctrl K</span>
+        </button>
         <button class="tool tool--icon" type="button" data-theme-toggle aria-label={t.nav.theme}>
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <circle cx="12" cy="12" r="8.5"></circle>
@@ -74,7 +88,7 @@ const navLinks = [
             <p class="hero__role">{t.hero.role}</p>
             <p class="hero__note"><span class="todo">{t.hero.note}</span></p>
           </div>
-          <p class="terminal" role="status" aria-label={t.hero.terminal.label}>
+          <p class="terminal">
             <span class="terminal__prompt" aria-hidden="true">&gt;</span>
             <span class="terminal__text" data-terminal>{t.hero.terminal.fallback}</span>
             <span class="caret" aria-hidden="true"></span>
@@ -177,7 +191,12 @@ const navLinks = [
         <li><a href={t.links.linkedin} rel="noopener">{t.contact.buttons.linkedin}</a></li>
         <li><a href={t.links.github} rel="noopener">{t.contact.buttons.github}</a></li>
       </ul>
+      <p class="label muted forget">
+        <button class="linklike" type="button" data-forget hidden>{t.footer.forget}</button>
+        <span data-forget-note hidden>{t.footer.forgetNote}</span>
+      </p>
       <p class="label muted">&copy; <span data-year>{buildYear}</span> {t.footer.rights}</p>
     </div>
   </footer>
+  <script id="dyn" type="application/json" set:html={dynJson} />
 </Base>

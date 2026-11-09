@@ -30,7 +30,6 @@
     "role": "I build websites and interactive systems.",
     "note": "[TODO] One honest sentence on what I want to be hired for.",
     "terminal": {
-      "label": "Status",
       "fallback": "Belo Horizonte, Brazil. GMT-3."
     }
   },
@@ -91,6 +90,64 @@
   },
   "footer": {
     "line": "[TODO] One opinionated sentence, to write with Eduardo.",
-    "rights": "Eduardo Sousa"
+    "rights": "Eduardo Sousa",
+    "forget": "forget me",
+    "forgetNote": "Clears what this browser remembers about your visit."
+  },
+  "dynamic": {
+    "locale": "en-US",
+    "greet": {
+      "night": "Middle of the night. Go to sleep. Or write me first.",
+      "morning": "Good morning.",
+      "afternoon": "Good afternoon.",
+      "evening": "Good evening.",
+      "weekend": "It's {weekday}. You're reading a website. Respect."
+    },
+    "clock": {
+      "diff": "{you} for you, {me} for me in Belo Horizonte.",
+      "same": "{you} for you. Same in Belo Horizonte."
+    },
+    "returning": {
+      "seen": "Back again. Last time you stopped at {section}.",
+      "plain": "Back again.",
+      "many": "Visit {n}. Just write me already."
+    },
+    "theme": {
+      "dark": "Dark mode. Good call.",
+      "light": "Light mode. Bold."
+    },
+    "events": {
+      "back": "Back already?",
+      "backLong": "Good to see you again.",
+      "idle": "Still there? No rush.",
+      "forgot": "Forgotten. We've never met.",
+      "goal": "GOAL. 1-0. It's a website, not a stadium."
+    },
+    "egg": {
+      "trigger": "goal"
+    },
+    "palette": {
+      "open": "Open command palette",
+      "title": "Command palette",
+      "placeholder": "Type a command",
+      "empty": "Nothing matches. Try “work”.",
+      "hint": "↑↓ move · Enter run · Esc close",
+      "goTo": "Go to {name}",
+      "project": "Project: {name}",
+      "copyEmail": "Copy email",
+      "copied": "Copied",
+      "copyFailed": "Could not copy",
+      "email": "Write an email",
+      "switchLang": "Read in Português",
+      "theme": "Switch theme",
+      "linkedin": "Open LinkedIn",
+      "github": "Open GitHub",
+      "groups": {
+        "go": "Go",
+        "project": "Project",
+        "action": "Action",
+        "link": "Link"
+      }
+    }
   }
 }

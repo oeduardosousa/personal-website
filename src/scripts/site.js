@@ -1,14 +1,16 @@
-// Always-on behavior: language/theme toggles, menu, copy email, header hairline, year.
-// Heavy motion (ScrollTrigger, SplitText, Lenis) loads later from scroll.js on idle or first interaction.
+// Always-on behavior: language/theme toggles, menu, copy email, header hairline, year, dynamic layer.
+// Heavy motion (ScrollTrigger, SplitText, Lenis) and the command palette load later, on demand.
 import { initHero } from "./hero.js";
+import { initDynamic } from "./dynamic.js";
+import { store, currentTheme, copyText } from "./util.js";
 
 const root = document.documentElement;
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => [...document.querySelectorAll(sel)];
-const store = {
-  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
-  set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* blocked: fine */ } },
-};
+
+// Strings and facts for the dynamic layer come from content/*.json via a JSON block in the page.
+let dyn = null;
+try { dyn = JSON.parse($("#dyn")?.textContent || "null"); } catch (e) { /* page still works */ }
 
 // Language toggle: the link already points at the other language (works without JS).
 $$("[data-lang-toggle]").forEach((link) => {
@@ -20,12 +22,10 @@ $$("[data-lang-toggle]").forEach((link) => {
 
 // Theme toggle: flips whatever is currently showing and remembers it.
 $("[data-theme-toggle]")?.addEventListener("click", () => {
-  const dark = root.dataset.theme
-    ? root.dataset.theme === "dark"
-    : !matchMedia("(prefers-color-scheme: light)").matches;
-  const next = dark ? "light" : "dark";
+  const next = currentTheme() === "dark" ? "light" : "dark";
   root.dataset.theme = next;
   store.set("theme", next);
+  document.dispatchEvent(new CustomEvent("themechange", { detail: next }));
 });
 
 // Footer year is computed, never hardcoded. (The build-time value is only the no-JS fallback.)
@@ -64,21 +64,8 @@ if (copyBtn) {
   const doneLabel = copyBtn.querySelector(".btn__done");
   const okText = doneLabel.textContent;
   let timer;
-  const legacyCopy = (text) => {
-    const ta = Object.assign(document.createElement("textarea"), { value: text });
-    ta.setAttribute("readonly", "");
-    ta.style.cssText = "position:fixed;opacity:0;top:0;left:0";
-    document.body.appendChild(ta);
-    ta.select();
-    let ok = false;
-    try { ok = document.execCommand("copy"); } catch (e) {}
-    ta.remove();
-    return ok;
-  };
   copyBtn.addEventListener("click", async () => {
-    const text = copyBtn.dataset.copy;
-    let ok = false;
-    try { await navigator.clipboard.writeText(text); ok = true; } catch (e) { ok = legacyCopy(text); }
+    const ok = await copyText(copyBtn.dataset.copy);
     doneLabel.textContent = ok ? okText : copyBtn.dataset.failed;
     copyBtn.dataset.state = ok ? "copied" : "failed";
     if (status) status.textContent = doneLabel.textContent;
@@ -89,6 +76,33 @@ if (copyBtn) {
 
 // Hero: intro + kinetic name (GSAP core only).
 initHero();
+
+// Dynamic layer: terminal line, memory, reactions, forget me, easter egg.
+if (dyn) {
+  try { initDynamic(dyn); } catch (e) { /* the static line stays */ }
+}
+
+// Command palette: the shortcut listens from the start; the palette itself loads on first use.
+if (dyn) {
+  const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+  let palette;
+  const load = () => (palette ??= import("./palette.js").then((m) => { m.initPalette(dyn); return m; }));
+  const open = () => load().then((m) => m.openPalette()).catch(() => { palette = null; });
+  // Warm it up on idle so the first Ctrl/Cmd+K is instant and no typed letters are lost.
+  ("requestIdleCallback" in window ? requestIdleCallback : (fn) => setTimeout(fn, 1500))(() => load().catch(() => { palette = null; }));
+  addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && !e.altKey && !e.shiftKey && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      open();
+    }
+  });
+  const trigger = $("[data-palette-open]");
+  if (trigger) {
+    trigger.hidden = false;
+    trigger.querySelector("[data-palette-key]").textContent = isMac ? "⌘K" : "Ctrl K";
+    trigger.addEventListener("click", open);
+  }
+}
 
 // Scroll motion: load on idle or the first interaction, whichever comes first.
 let started = false;

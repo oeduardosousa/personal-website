@@ -1,6 +1,21 @@
 // Hero: one-time intro, then the kinetic name. GSAP core only. Transform and opacity only.
 import gsap from "gsap";
 
+/** Easter egg: the name does a quick wave. Transform only; skipped under reduced motion. */
+export function wave() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const letters = document.querySelectorAll("[data-kinetic] .ch");
+  if (!letters.length) return;
+  gsap.to(letters, {
+    keyframes: [
+      { yPercent: -16, duration: 0.18, ease: "power2.out" },
+      { yPercent: 0, duration: 0.5, ease: "elastic.out(1, 0.45)" },
+    ],
+    stagger: 0.035,
+    overwrite: "auto",
+  });
+}
+
 export function initHero() {
   const h1 = document.querySelector("[data-kinetic]");
   if (!h1) return;
@@ -16,7 +31,11 @@ export function initHero() {
       const terminal = document.querySelector(".terminal");
       const tl = gsap.timeline({
         defaults: { ease: "expo.out" },
-        onComplete: () => { root.classList.remove("intro"); resolve(); },
+        onComplete: () => {
+          root.classList.remove("intro");
+          document.dispatchEvent(new CustomEvent("hero:intro-done"));
+          resolve();
+        },
       });
       tl.fromTo(letters, { yPercent: 70, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.7, stagger: 0.04 })
         .fromTo(lead, { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, "-=0.35")

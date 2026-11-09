@@ -30,7 +30,6 @@
     "role": "Eu faço sites e sistemas interativos.",
     "note": "[TODO] Uma frase honesta sobre pelo que eu quero ser contratado.",
     "terminal": {
-      "label": "Status",
       "fallback": "Belo Horizonte, Brasil. GMT-3."
     }
   },
@@ -91,6 +90,64 @@
   },
   "footer": {
     "line": "[TODO] Uma frase opinativa, para escrever com o Eduardo.",
-    "rights": "Eduardo Sousa"
+    "rights": "Eduardo Sousa",
+    "forget": "esquecer de mim",
+    "forgetNote": "Apaga o que este navegador lembra da sua visita."
+  },
+  "dynamic": {
+    "locale": "pt-BR",
+    "greet": {
+      "night": "Madrugada. Vai dormir. Ou me escreve antes.",
+      "morning": "Bom dia.",
+      "afternoon": "Boa tarde.",
+      "evening": "Boa noite.",
+      "weekend": "É {weekday}. E você aqui, lendo um site. Respeito."
+    },
+    "clock": {
+      "diff": "{you} aí, {me} aqui em Belo Horizonte.",
+      "same": "{you} aí. Mesma hora em Belo Horizonte."
+    },
+    "returning": {
+      "seen": "De volta. Da última vez você parou em {section}.",
+      "plain": "De volta.",
+      "many": "Visita {n}. Me escreve de uma vez."
+    },
+    "theme": {
+      "dark": "Modo escuro. Boa.",
+      "light": "Modo claro. Ousado."
+    },
+    "events": {
+      "back": "Já voltou?",
+      "backLong": "Que bom te ver de novo.",
+      "idle": "Ainda aí? Sem pressa.",
+      "forgot": "Esquecido. Nunca nos vimos.",
+      "goal": "GOL. 1 a 0. É um site, não um estádio."
+    },
+    "egg": {
+      "trigger": "gol"
+    },
+    "palette": {
+      "open": "Abrir paleta de comandos",
+      "title": "Paleta de comandos",
+      "placeholder": "Digite um comando",
+      "empty": "Nada encontrado. Tente “trabalhos”.",
+      "hint": "↑↓ mover · Enter executar · Esc fechar",
+      "goTo": "Ir para {name}",
+      "project": "Projeto: {name}",
+      "copyEmail": "Copiar e-mail",
+      "copied": "Copiado",
+      "copyFailed": "Não consegui copiar",
+      "email": "Escrever um e-mail",
+      "switchLang": "Read in English",
+      "theme": "Trocar tema",
+      "linkedin": "Abrir LinkedIn",
+      "github": "Abrir GitHub",
+      "groups": {
+        "go": "Ir",
+        "project": "Projeto",
+        "action": "Ação",
+        "link": "Link"
+      }
+    }
   }
 }

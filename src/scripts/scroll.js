@@ -13,6 +13,7 @@ export function initScroll() {
   // Smooth scroll: off under reduced motion. Never traps scroll (menu can pause it).
   mm.add("(prefers-reduced-motion: no-preference)", () => {
     const lenis = new Lenis({ anchors: { offset: -64 } });
+    window.__lenis = lenis; // used by goTo() in util.js
     lenis.on("scroll", ScrollTrigger.update);
     const tick = (time) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);
@@ -20,6 +21,7 @@ export function initScroll() {
     const lock = (e) => (e.detail ? lenis.stop() : lenis.start());
     document.documentElement.addEventListener("scrolllock", lock);
     return () => {
+      window.__lenis = null;
       document.documentElement.removeEventListener("scrolllock", lock);
       gsap.ticker.remove(tick);
       lenis.destroy();
@@ -97,6 +99,7 @@ function setupWork(work, { full, reduced, ease, belowFold }) {
     const tl = gsap.timeline({
       defaults: { ease: "none" },
       scrollTrigger: {
+        id: "work-pin",
         trigger: work,
         start: "top top",
         end: () => "+=" + rest.length * innerHeight * 0.5,
@@ -107,6 +110,8 @@ function setupWork(work, { full, reduced, ease, belowFold }) {
       },
     });
     rest.forEach((el, i) => tl.to(el, { opacity: 1, y: 0, duration: 1 }, i));
+    // goTo() lands at the end of the pin, where every project is revealed.
+    work.__pinEnd = () => ScrollTrigger.getById("work-pin")?.end ?? null;
     return;
   }
 
