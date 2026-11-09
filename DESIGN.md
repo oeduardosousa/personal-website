@@ -226,7 +226,7 @@ Easing: `--ease-out: cubic-bezier(0.23, 1, 0.32, 1)` for entering and feedback, 
 
 Cut order if over budget: parallax, cursor effects, kinetic name reaction, then the pinned section. Each has a static fallback.
 
-Note on the variable font: the kinetic name stays inside transform-only. Animating variable-font axes (`wght`, `wdth`) changes glyph widths and repaints text, so it is not used by default. It is an optional upgrade for the single hero element and would break the transform-only rule; it is left as your call.
+Decision (confirmed): the kinetic name is transform-only. Variable-font axes (`wght`, `wdth`) are never animated, because that changes glyph widths and repaints text. The variable font is used for static weights and widths only.
 
 ## Do's and Don'ts
 
