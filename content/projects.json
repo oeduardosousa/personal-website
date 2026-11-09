@@ -1,0 +1,96 @@
+[
+  {
+    "id": "cine-scope",
+    "published": true,
+    "featured": false,
+    "title": "cine-scope",
+    "summary": {
+      "en": "A React guide for movie lovers to find their next binge-watch.",
+      "pt": "Um guia em React para quem ama filmes achar a próxima maratona."
+    },
+    "tags": ["React", "JavaScript"],
+    "links": {
+      "repo": "https://github.com/oeduardosousa/cine-scope",
+      "live": null
+    },
+    "image": null,
+    "todo": ["live URL (deployed on Vercel as cine-scope-react28)", "screenshot", "problem / what I did / result"]
+  },
+  {
+    "id": "devboard",
+    "published": true,
+    "featured": false,
+    "title": "devboard",
+    "summary": {
+      "en": "A personal project management dashboard. Create projects and tasks, track what's done, see the progress.",
+      "pt": "Um painel pessoal de gerenciamento de projetos. Crie projetos e tarefas, marque o que acabou e veja o progresso."
+    },
+    "tags": ["JavaScript"],
+    "links": {
+      "repo": "https://github.com/oeduardosousa/devboard",
+      "live": null
+    },
+    "image": null,
+    "todo": ["live URL (deployed on Vercel as devboard)", "screenshot", "problem / what I did / result"]
+  },
+  {
+    "id": "simulador-enem",
+    "published": false,
+    "title": "simulador-enem",
+    "summary": { "en": "[TODO]", "pt": "[TODO]" },
+    "tags": [],
+    "links": { "repo": null, "live": null },
+    "image": null,
+    "todo": ["what it is", "live URL", "screenshot", "set published to true"]
+  },
+  {
+    "id": "advocacy",
+    "published": false,
+    "title": "advocacy",
+    "summary": { "en": "[TODO]", "pt": "[TODO]" },
+    "tags": [],
+    "links": { "repo": null, "live": null },
+    "image": null,
+    "todo": ["what it is", "live URL", "screenshot", "set published to true"]
+  },
+  {
+    "id": "real-estate",
+    "published": false,
+    "title": "real-estate",
+    "summary": { "en": "[TODO]", "pt": "[TODO]" },
+    "tags": [],
+    "links": { "repo": null, "live": null },
+    "image": null,
+    "todo": ["what it is", "live URL", "screenshot", "set published to true"]
+  },
+  {
+    "id": "waterproofing",
+    "published": false,
+    "title": "waterproofing",
+    "summary": { "en": "[TODO]", "pt": "[TODO]" },
+    "tags": [],
+    "links": { "repo": null, "live": null },
+    "image": null,
+    "todo": ["what it is", "live URL", "screenshot", "set published to true"]
+  },
+  {
+    "id": "beauty-salon",
+    "published": false,
+    "title": "beauty-salon",
+    "summary": { "en": "[TODO]", "pt": "[TODO]" },
+    "tags": [],
+    "links": { "repo": null, "live": null },
+    "image": null,
+    "todo": ["what it is", "live URL", "screenshot", "set published to true"]
+  },
+  {
+    "id": "barber-shop-portfolio",
+    "published": false,
+    "title": "barber-shop-portfolio",
+    "summary": { "en": "[TODO]", "pt": "[TODO]" },
+    "tags": [],
+    "links": { "repo": null, "live": null },
+    "image": null,
+    "todo": ["what it is", "live URL", "screenshot", "set published to true"]
+  }
+]

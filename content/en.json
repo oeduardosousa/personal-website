@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "htmlLang": "en",
+    "title": "Eduardo Sousa | Websites and interactive systems",
+    "description": "Eduardo Sousa builds websites and interactive systems. Based in Belo Horizonte, Brazil."
+  },
+  "name": "Eduardo Sousa",
+  "links": {
+    "email": "oeduardosousa.dev@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/eduardo-sousa-528b77334",
+    "github": "https://github.com/oeduardosousa"
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "label": "Main",
+    "home": "Home",
+    "whatIDo": "What I do",
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "language": {
+      "code": "PT",
+      "label": "Ler em português"
+    }
+  },
+  "hero": {
+    "role": "I build websites and interactive systems.",
+    "note": "[TODO] One honest sentence on what I want to be hired for.",
+    "terminal": {
+      "label": "Status",
+      "fallback": "Belo Horizonte, Brazil. GMT-3."
+    }
+  },
+  "whatIDo": {
+    "title": "What I do",
+    "items": [
+      {
+        "title": "Websites",
+        "text": "Sites for small businesses in different niches. Practice builds so far."
+      },
+      {
+        "title": "Interactive systems",
+        "text": "React apps. A movie guide, a project dashboard."
+      }
+    ],
+    "tools": {
+      "label": "Tools I use",
+      "list": ["GitHub", "VS Code", "Cloudflare", "Claude Code"],
+      "todo": "[TODO] Confirm which languages and stacks I claim (JavaScript, React, Python, C, HTML)."
+    }
+  },
+  "work": {
+    "title": "Selected work",
+    "intro": "Practice builds. Real clients are next.",
+    "links": {
+      "repo": "Code",
+      "live": "Live"
+    }
+  },
+  "about": {
+    "title": "About",
+    "paragraphs": [
+      "I'm from Belo Horizonte, Brazil.",
+      "My parents signed me up for a technical program alongside high school. I started reading about the field on my own. I loved it.",
+      "I want to be a reference in this field someday. [TODO] A reference in what?"
+    ],
+    "outside": {
+      "label": "Outside code",
+      "text": "Family, friends, studying, volunteering, soccer. It's a website, not a biography."
+    }
+  },
+  "contact": {
+    "title": "Got something to build? Write me.",
+    "emailSubject": "Hi Eduardo",
+    "buttons": {
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    }
+  },
+  "footer": {
+    "line": "[TODO] One opinionated sentence, to write with Eduardo.",
+    "rights": "Eduardo Sousa"
+  }
+}

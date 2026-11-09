@@ -1,0 +1,113 @@
+/* Design tokens from DESIGN.md. Dark is the base; light follows prefers-color-scheme. */
+:root {
+  color-scheme: dark;
+
+  /* Color */
+  --color-primary: #c6f432;
+  --color-on-primary: #0b0c0e;
+  --color-accent-text: #c6f432; /* lime as text/links/focus; Lime Ink in light mode */
+  --color-bg: #0b0c0e;
+  --color-surface: #131417;
+  --color-border: #26272c;
+  --color-text: #f2f1ec;
+  --color-text-muted: #9a9ca3;
+  --color-success: #5fd38a;
+  --color-warning: #f5b84b;
+  --color-error: #ff6b5e;
+
+  /* Type */
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: var(--font-display);
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --text-hero: clamp(3.5rem, 14vw, 12rem);
+  --text-headline: clamp(2.5rem, 6vw, 5rem);
+  --text-title: clamp(1.75rem, 3.5vw, 2.75rem);
+  --text-body: 1.0625rem;
+  --text-label: 0.875rem;
+  --text-tag: 0.8125rem;
+
+  --weight-hero: 800;
+  --weight-headline: 700;
+  --weight-title: 600;
+  --weight-body: 400;
+  --weight-label: 500;
+
+  --leading-hero: 0.9;
+  --leading-headline: 1;
+  --leading-title: 1.1;
+  --leading-body: 1.55;
+
+  --tracking-display: -0.02em;
+  --tracking-label: 0.04em;
+
+  /* Shape */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --border: 1px solid var(--color-border);
+
+  /* Spacing (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-section: 96px;
+  --space-section-max: 160px;
+
+  /* Layout */
+  --gutter: 16px;
+  --measure: 68ch;
+  --wide: 1280px;
+  --tap: 44px;
+
+  /* Elevation: flat. One shadow, command palette only. */
+  --shadow-palette: 0 24px 64px rgba(0, 0, 0, 0.5);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --dur-press: 120ms;
+  --dur-ui: 200ms;
+  --dur-enter: 600ms;
+}
+
+@media (min-width: 640px) {
+  :root { --gutter: 32px; }
+}
+@media (min-width: 960px) {
+  :root { --gutter: 48px; }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --color-accent-text: #3f6200;
+    --color-bg: #f4f3ee;
+    --color-surface: #eae9e3;
+    --color-border: #d5d4cd;
+    --color-text: #0e0f11;
+    --color-text-muted: #55575e;
+    --color-success: #1f7a45;
+    --color-warning: #8a5a00;
+    --color-error: #b42318;
+    --shadow-palette: 0 24px 64px rgba(0, 0, 0, 0.2);
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-accent-text: #3f6200;
+  --color-bg: #f4f3ee;
+  --color-surface: #eae9e3;
+  --color-border: #d5d4cd;
+  --color-text: #0e0f11;
+  --color-text-muted: #55575e;
+  --color-success: #1f7a45;
+  --color-warning: #8a5a00;
+  --color-error: #b42318;
+  --shadow-palette: 0 24px 64px rgba(0, 0, 0, 0.2);
+}

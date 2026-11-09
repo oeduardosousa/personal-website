@@ -1,0 +1,127 @@
+---
+import Base from "../layouts/Base.astro";
+import { getContent, getProjects, otherLang, paths } from "../lib/content.js";
+
+const { lang } = Astro.props;
+const t = getContent(lang);
+const projects = getProjects(lang);
+const other = otherLang(lang);
+const mailto = `mailto:${t.links.email}?subject=${encodeURIComponent(t.contact.emailSubject)}`;
+const buildYear = new Date().getFullYear();
+---
+
+<Base lang={lang} meta={t.meta}>
+  <a class="skip-link" href="#main">{t.nav.skip}</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="wordmark" href={paths[lang]}>{t.name}</a>
+      <nav aria-label={t.nav.label}>
+        <ul>
+          <li><a href="#what-i-do">{t.nav.whatIDo}</a></li>
+          <li><a href="#work">{t.nav.work}</a></li>
+          <li><a href="#about">{t.nav.about}</a></li>
+          <li><a href="#contact">{t.nav.contact}</a></li>
+          <li>
+            <a href={paths[other]} hreflang={other === "pt" ? "pt-BR" : "en"} lang={other === "pt" ? "pt-BR" : "en"} data-lang-toggle={other} aria-label={t.nav.language.label}>
+              {t.nav.language.code}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <h1 id="hero-title">{t.name}</h1>
+        <p class="hero__role">{t.hero.role}</p>
+        <p class="hero__note"><span class="todo">{t.hero.note}</span></p>
+        <p class="terminal" aria-label={t.hero.terminal.label}>
+          <span class="terminal__prompt" aria-hidden="true">&gt;</span>
+          <span data-terminal>{t.hero.terminal.fallback}</span>
+        </p>
+      </div>
+    </section>
+
+    <section id="what-i-do" aria-labelledby="what-i-do-title">
+      <div class="wrap">
+        <h2 id="what-i-do-title">{t.whatIDo.title}</h2>
+        <ul class="do-list">
+          {t.whatIDo.items.map((item) => (
+            <li>
+              <h3>{item.title}</h3>
+              <p class="measure">{item.text}</p>
+            </li>
+          ))}
+        </ul>
+        <div class="tools">
+          <p class="label muted">{t.whatIDo.tools.label}</p>
+          <ul>
+            {t.whatIDo.tools.list.map((tool) => <li class="tag">{tool}</li>)}
+          </ul>
+          <p class="todo">{t.whatIDo.tools.todo}</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <h2 id="work-title">{t.work.title}</h2>
+        <p class="measure muted">{t.work.intro}</p>
+        <ul class="projects">
+          {projects.map((p) => (
+            <li id={`project-${p.id}`}>
+              {p.image && (
+                <figure>
+                  <img src={p.image.src} alt={p.image.alt} width="1600" height="1000" loading="lazy" decoding="async" />
+                </figure>
+              )}
+              <h3>{p.title}</h3>
+              <p class="measure">{p.summary}</p>
+              {p.tags.length > 0 && (
+                <ul class="tags">
+                  {p.tags.map((tag) => <li class="tag">{tag}</li>)}
+                </ul>
+              )}
+              <p class="links">
+                {p.links.repo && <a href={p.links.repo} rel="noopener">{t.work.links.repo}</a>}
+                {p.links.live && <a href={p.links.live} rel="noopener">{t.work.links.live}</a>}
+              </p>
+              {p.todo.length > 0 && <p class="todo">[TODO] {p.todo.join(", ")}</p>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <h2 id="about-title">{t.about.title}</h2>
+        <div class="stack measure">
+          {t.about.paragraphs.map((text) => <p>{text}</p>)}
+          <p><span class="label muted">{t.about.outside.label}</span><br />{t.about.outside.text}</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 id="contact-title">{t.contact.title}</h2>
+        <p class="buttons">
+          <a class="btn btn--primary" href={mailto}>{t.contact.buttons.email}</a>
+          <a class="btn" href={t.links.linkedin} rel="noopener">{t.contact.buttons.linkedin}</a>
+          <a class="btn" href={t.links.github} rel="noopener">{t.contact.buttons.github}</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="todo">{t.footer.line}</p>
+      <p class="label muted">&copy; <span data-year>{buildYear}</span> {t.footer.rights}</p>
+    </div>
+  </footer>
+</Base>

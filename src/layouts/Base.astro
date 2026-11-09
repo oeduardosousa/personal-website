@@ -1,0 +1,54 @@
+---
+import "../styles/fonts.css";
+import "../styles/tokens.css";
+import "../styles/base.css";
+import { paths } from "../lib/content.js";
+
+const { lang, meta } = Astro.props;
+const site = Astro.site ?? new URL("http://localhost");
+const url = (l) => new URL(paths[l], site).href;
+---
+
+<!doctype html>
+<html lang={meta.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="canonical" href={url(lang)} />
+    <link rel="alternate" hreflang="en" href={url("en")} />
+    <link rel="alternate" hreflang="pt-BR" href={url("pt")} />
+    <link rel="alternate" hreflang="x-default" href={url("en")} />
+    <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <!--
+      Language detection. Runs before first paint, so there is no flash.
+      Order: saved choice > browser language (only on arrival from outside the site) > current page.
+      Storage can be blocked: everything is in try/catch and the page still works.
+    -->
+    <script is:inline>
+      (function () {
+        try {
+          var onPt = location.pathname.indexOf("/pt") === 0;
+          var saved = null;
+          try { saved = localStorage.getItem("lang"); } catch (e) {}
+          var want = saved;
+          if (want !== "en" && want !== "pt") {
+            var external = !document.referrer || document.referrer.indexOf(location.origin) !== 0;
+            if (!external) return;
+            want = /^pt\b/i.test(navigator.language || "") ? "pt" : "en";
+          }
+          if (want === "pt" && !onPt) location.replace("/pt/" + location.search + location.hash);
+          else if (want === "en" && onPt) location.replace("/" + location.search + location.hash);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+    <script>
+      import "../scripts/site.js";
+    </script>
+  </body>
+</html>
