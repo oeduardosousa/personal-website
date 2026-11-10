@@ -1,5 +1,6 @@
 ---
 import "../styles/fonts.css";
+import heroFont from "../assets/fonts/bricolage-grotesque-latin-wght.woff2?url";
 import "../styles/tokens.css";
 import "../styles/base.css";
 import { paths } from "../lib/content.js";
@@ -22,7 +23,7 @@ const url = (l) => new URL(paths[l], site).href;
     <link rel="alternate" hreflang="en" href={url("en")} />
     <link rel="alternate" hreflang="pt-BR" href={url("pt")} />
     <link rel="alternate" hreflang="x-default" href={url("en")} />
-    <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={heroFont} as="font" type="font/woff2" crossorigin />
     <!--
       Before first paint: mark JS as available, apply a saved theme, and decide whether the hero intro plays.
       The intro plays once (localStorage "intro"), never under reduced motion. A timeout guarantees the

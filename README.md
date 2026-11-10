@@ -18,7 +18,7 @@ npm run check:content  # validate content/*.json and list open [TODO]s
 | Projects (both languages) | `content/projects.json` |
 | Project images | `public/assets/projects/` |
 | Design tokens (CSS variables) | `src/styles/tokens.css` |
-| Fonts (self-hosted, Latin subset) | `public/fonts/` + `src/styles/fonts.css` |
+| Fonts (self-hosted, subset WOFF2, hashed at build) | `src/assets/fonts/` + `src/styles/fonts.css` (licenses in `public/fonts/`) |
 
 Every string, link, project and image comes from those files. Components never hardcode copy. The footer year is computed.
 
