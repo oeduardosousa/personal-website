@@ -16,8 +16,6 @@ export const session = {
   remove(k) { try { sessionStorage.removeItem(k); } catch (e) { /* ignore */ } },
 };
 
-export const prefersReducedMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
-
 export function currentTheme() {
   const set = document.documentElement.dataset.theme;
   if (set === "light" || set === "dark") return set;
