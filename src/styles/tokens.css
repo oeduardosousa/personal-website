@@ -18,7 +18,7 @@
   /* Type */
   --font-display: "Bricolage Grotesque", system-ui, sans-serif;
   --font-body: var(--font-display);
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono", "JetBrains Mono Fallback", ui-monospace, monospace;
 
   --text-hero: clamp(3.5rem, 14vw, 12rem);
   --text-headline: clamp(2.5rem, 6vw, 5rem);
