@@ -139,7 +139,7 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
               <li class:list={["project", { "project--wide": i === wideIndex }]} id={`project-${p.id}`}>
                 {p.image && (
                   <figure>
-                    <img src={p.image.src} alt={p.image.alt} width="1600" height="1000" loading="lazy" decoding="async" />
+                    <img src={p.image.src} alt={p.image.alt} width="1440" height="900" loading="lazy" decoding="async" />
                   </figure>
                 )}
                 <h3>
@@ -165,7 +165,12 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
 
     <section id="about" class="about" aria-labelledby="about-title">
       <div class="wrap grid">
-        <h2 id="about-title" class="about__title" data-split>{t.about.title}</h2>
+        <div class="about__side">
+          <h2 id="about-title" class="about__title" data-split>{t.about.title}</h2>
+          <figure class="about__photo" data-reveal>
+            <img src={t.about.photo.src} alt={t.about.photo.alt} width="800" height="800" loading="lazy" decoding="async" />
+          </figure>
+        </div>
         <div class="about__body stack measure">
           {t.about.paragraphs.map(pub).filter(Boolean).map((text) => <p data-reveal>{text}</p>)}
           <p data-reveal><span class="label muted">{t.about.outside.label}</span><br />{t.about.outside.text}</p>

@@ -234,8 +234,11 @@ h2 { margin-bottom: var(--space-8); }
 }
 
 /* About: heading left, text offset right. */
+.about__photo { margin-bottom: var(--space-8); width: min(100%, 320px); border: var(--border); border-radius: var(--radius-md); overflow: hidden; }
+.about__photo img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
 @media (min-width: 960px) {
-  .about__title { grid-column: 1 / span 5; margin-bottom: 0; }
+  .about__side { grid-column: 1 / span 5; }
+  .about__title { margin-bottom: var(--space-8); }
   .about__body { grid-column: 7 / span 5; }
 }
 

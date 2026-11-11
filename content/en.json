@@ -68,6 +68,10 @@
   },
   "about": {
     "title": "About",
+    "photo": {
+      "src": "/assets/portrait.webp",
+      "alt": "Eduardo Sousa smiling, in a dark t-shirt with a yellow lanyard."
+    },
     "paragraphs": [
       "I'm from Belo Horizonte, Brazil.",
       "My parents signed me up for a technical program alongside high school. I started reading about the field on my own. I loved it.",

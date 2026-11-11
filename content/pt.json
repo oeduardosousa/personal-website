@@ -68,6 +68,10 @@
   },
   "about": {
     "title": "Sobre",
+    "photo": {
+      "src": "/assets/portrait.webp",
+      "alt": "Eduardo Sousa sorrindo, de camiseta escura e cordão amarelo."
+    },
     "paragraphs": [
       "Sou de Belo Horizonte, Brasil.",
       "Meus pais me matricularam num curso técnico junto com o ensino médio. Comecei a pesquisar a área por conta própria. Gostei muito.",

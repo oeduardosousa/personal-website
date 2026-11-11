@@ -1,5 +1,108 @@
 [
   {
+    "id": "real-estate",
+    "published": true,
+    "featured": true,
+    "title": "real-estate",
+    "summary": {
+      "en": "A site for a real estate agency in Belo Horizonte. One view for buyers, one for the agency.",
+      "pt": "Um site para uma imobiliária de Belo Horizonte. Uma visão para quem compra, outra para a imobiliária."
+    },
+    "tags": [],
+    "links": { "repo": null, "live": "https://real-estate-puce-iota.vercel.app/" },
+    "image": {
+      "src": "real-estate.webp",
+      "alt": {
+        "en": "Home page of the real estate site: a large serif headline, three property cards and soft mountain shapes.",
+        "pt": "Página inicial do site da imobiliária: título grande em serifa, três cartões de imóveis e formas suaves de montanha."
+      }
+    },
+    "todo": ["repo link", "stack tags"]
+  },
+  {
+    "id": "devboard",
+    "published": true,
+    "featured": false,
+    "title": "devboard",
+    "summary": {
+      "en": "A personal project management dashboard. Create projects and tasks, track what's done, see the progress.",
+      "pt": "Um painel pessoal de gerenciamento de projetos. Crie projetos e tarefas, marque o que acabou e veja o progresso."
+    },
+    "tags": ["JavaScript"],
+    "links": {
+      "repo": "https://github.com/oeduardosousa/devboard",
+      "live": "https://devboard-tan-phi.vercel.app/"
+    },
+    "image": {
+      "src": "devboard.webp",
+      "alt": {
+        "en": "DevBoard dashboard on a dark background, with counters for projects, tasks and completed work, all at zero.",
+        "pt": "Painel do DevBoard em fundo escuro, com contadores de projetos, tarefas e concluídas, todos em zero."
+      }
+    },
+    "todo": ["a screenshot with sample data instead of the empty state", "problem / what I did / result"]
+  },
+  {
+    "id": "beauty-salon",
+    "published": true,
+    "featured": false,
+    "title": "beauty-salon",
+    "summary": {
+      "en": "A beauty salon site with a client view and a staff view. All data is simulated in the browser.",
+      "pt": "Um site de salão de beleza com visão da cliente e da equipe. Todos os dados são simulados no navegador."
+    },
+    "tags": [],
+    "links": { "repo": null, "live": "https://beauty-salon-chi-mauve.vercel.app/" },
+    "image": {
+      "src": "beauty-salon.webp",
+      "alt": {
+        "en": "Entry screen of the salon site: two cards, one for clients on pink, one for staff on dark plum.",
+        "pt": "Tela de entrada do site do salão: dois cartões, um para clientes em rosa e outro para a equipe em ameixa escura."
+      }
+    },
+    "todo": ["repo link", "stack tags"]
+  },
+  {
+    "id": "barber-shop-portfolio",
+    "published": true,
+    "featured": false,
+    "title": "barber-shop-portfolio",
+    "summary": {
+      "en": "A barbershop demo. Clients book a chair. Barbers see a day schedule with simulated times.",
+      "pt": "Uma demo de barbearia. O cliente reserva uma cadeira. O barbeiro vê a agenda do dia, com horários simulados."
+    },
+    "tags": [],
+    "links": { "repo": null, "live": "https://barber-shop-portfolio-weld.vercel.app/" },
+    "image": {
+      "src": "barber-shop-portfolio.webp",
+      "alt": {
+        "en": "Entry screen of the barbershop demo on a dark background: one card for clients, one for barbers.",
+        "pt": "Tela de entrada da demo da barbearia em fundo escuro: um cartão para clientes e outro para barbeiros."
+      }
+    },
+    "todo": ["repo link", "stack tags"]
+  },
+  {
+    "id": "advocacy",
+    "published": true,
+    "featured": false,
+    "title": "advocacy",
+    "summary": {
+      "en": "A concept site for a law firm. Six areas of law, plain language, one clear way to get in touch.",
+      "pt": "Um site conceito para um escritório de advocacia. Seis áreas do direito, linguagem clara e um jeito simples de falar com o escritório."
+    },
+    "tags": [],
+    "links": { "repo": null, "live": "https://advocacy-inky.vercel.app/" },
+    "image": {
+      "src": "advocacy.webp",
+      "alt": {
+        "en": "Home page of the law firm concept: a large serif headline, a burgundy contact button and an illustration of papers and a pencil.",
+        "pt": "Página inicial do conceito do escritório: título grande em serifa, botão bordô de contato e uma ilustração de papéis e um lápis."
+      }
+    },
+    "todo": ["repo link", "stack tags"]
+  },
+  {
     "id": "cine-scope",
     "published": true,
     "featured": false,
@@ -17,23 +120,6 @@
     "todo": ["live URL (deployed on Vercel as cine-scope-react28)", "screenshot", "problem / what I did / result"]
   },
   {
-    "id": "devboard",
-    "published": true,
-    "featured": false,
-    "title": "devboard",
-    "summary": {
-      "en": "A personal project management dashboard. Create projects and tasks, track what's done, see the progress.",
-      "pt": "Um painel pessoal de gerenciamento de projetos. Crie projetos e tarefas, marque o que acabou e veja o progresso."
-    },
-    "tags": ["JavaScript"],
-    "links": {
-      "repo": "https://github.com/oeduardosousa/devboard",
-      "live": null
-    },
-    "image": null,
-    "todo": ["live URL (deployed on Vercel as devboard)", "screenshot", "problem / what I did / result"]
-  },
-  {
     "id": "simulador-enem",
     "published": false,
     "title": "simulador-enem",
@@ -44,49 +130,9 @@
     "todo": ["what it is", "live URL", "screenshot", "set published to true"]
   },
   {
-    "id": "advocacy",
-    "published": false,
-    "title": "advocacy",
-    "summary": { "en": "[TODO]", "pt": "[TODO]" },
-    "tags": [],
-    "links": { "repo": null, "live": null },
-    "image": null,
-    "todo": ["what it is", "live URL", "screenshot", "set published to true"]
-  },
-  {
-    "id": "real-estate",
-    "published": false,
-    "title": "real-estate",
-    "summary": { "en": "[TODO]", "pt": "[TODO]" },
-    "tags": [],
-    "links": { "repo": null, "live": null },
-    "image": null,
-    "todo": ["what it is", "live URL", "screenshot", "set published to true"]
-  },
-  {
     "id": "waterproofing",
     "published": false,
     "title": "waterproofing",
-    "summary": { "en": "[TODO]", "pt": "[TODO]" },
-    "tags": [],
-    "links": { "repo": null, "live": null },
-    "image": null,
-    "todo": ["what it is", "live URL", "screenshot", "set published to true"]
-  },
-  {
-    "id": "beauty-salon",
-    "published": false,
-    "title": "beauty-salon",
-    "summary": { "en": "[TODO]", "pt": "[TODO]" },
-    "tags": [],
-    "links": { "repo": null, "live": null },
-    "image": null,
-    "todo": ["what it is", "live URL", "screenshot", "set published to true"]
-  },
-  {
-    "id": "barber-shop-portfolio",
-    "published": false,
-    "title": "barber-shop-portfolio",
     "summary": { "en": "[TODO]", "pt": "[TODO]" },
     "tags": [],
     "links": { "repo": null, "live": null },
