@@ -3,11 +3,13 @@ import "../styles/fonts.css";
 import heroFont from "../assets/fonts/bricolage-grotesque-latin-wght.woff2?url";
 import "../styles/tokens.css";
 import "../styles/base.css";
-import { paths } from "../lib/content.js";
+import { paths, getContent } from "../lib/content.js";
 
-const { lang, meta } = Astro.props;
+const { lang, meta, name } = Astro.props;
 const site = Astro.site ?? new URL("http://localhost");
 const url = (l) => new URL(paths[l], site).href;
+const ogImage = new URL("/og.png", site).href;
+const ogAlternate = Object.keys(paths).filter((l) => l !== lang);
 ---
 
 <!doctype html>
@@ -18,6 +20,18 @@ const url = (l) => new URL(paths[l], site).href;
     <title>{meta.title}</title>
     <meta name="description" content={meta.description} />
     <meta name="color-scheme" content="dark light" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={name} />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:url" content={url(lang)} />
+    <meta property="og:locale" content={meta.ogLocale} />
+    {ogAlternate.map((l) => <meta property="og:locale:alternate" content={getContent(l).meta.ogLocale} />)}
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={meta.ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href={url(lang)} />
     <link rel="alternate" hreflang="en" href={url("en")} />

@@ -16,6 +16,17 @@ export function getContent(lang) {
   return dictionaries[lang];
 }
 
+/**
+ * Open gaps are written as "[TODO] ..." in the content files. They show in dev so they stay
+ * visible while writing, and are cut from production output so visitors never read them.
+ * A string that is only a TODO becomes "" (callers skip the element); a TODO at the end of a
+ * sentence is dropped and the sentence before it stays.
+ */
+export function pub(text) {
+  if (import.meta.env.DEV || typeof text !== "string") return text;
+  return text.replace(/\s*\[TODO[^\]]*\][\s\S]*$/, "").trim();
+}
+
 /** Published projects, with text already resolved to `lang`. */
 export function getProjects(lang) {
   return projects

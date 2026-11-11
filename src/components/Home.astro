@@ -1,9 +1,12 @@
 ---
 import Base from "../layouts/Base.astro";
-import { getContent, getProjects, otherLang, paths } from "../lib/content.js";
+import { getContent, getProjects, otherLang, paths, pub } from "../lib/content.js";
 
 const { lang } = Astro.props;
 const t = getContent(lang);
+const heroNote = pub(t.hero.note);
+const toolsTodo = pub(t.whatIDo.tools.todo);
+const footerLine = pub(t.footer.line);
 const projects = getProjects(lang);
 const other = otherLang(lang);
 const otherHtmlLang = other === "pt" ? "pt-BR" : "en";
@@ -34,7 +37,7 @@ const dyn = {
 const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u003c"); // keep </script> out of the JSON block
 ---
 
-<Base lang={lang} meta={t.meta}>
+<Base lang={lang} meta={t.meta} name={t.name}>
   <a class="skip-link" href="#main">{t.nav.skip}</a>
 
   <header class="site-header" data-header>
@@ -90,7 +93,7 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
         <div class="hero__meta">
           <div class="hero__lead">
             <p class="hero__role">{t.hero.role}</p>
-            <p class="hero__note"><span class="todo">{t.hero.note}</span></p>
+            {heroNote && <p class="hero__note"><span class="todo">{heroNote}</span></p>}
           </div>
           <p class="terminal">
             <span class="terminal__prompt" aria-hidden="true">&gt;</span>
@@ -118,7 +121,7 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
             <ul>
               {t.whatIDo.tools.list.map((tool) => <li class="tag">{tool}</li>)}
             </ul>
-            <p class="todo">{t.whatIDo.tools.todo}</p>
+            {toolsTodo && <p class="todo">{toolsTodo}</p>}
           </div>
         </div>
       </div>
@@ -151,7 +154,7 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
                   {p.links.repo && <a href={p.links.repo} rel="noopener">{t.work.links.repo}</a>}
                   {p.links.live && <a href={p.links.live} rel="noopener">{t.work.links.live}</a>}
                 </p>
-                {p.todo.length > 0 && <p class="todo">[TODO] {p.todo.join(", ")}</p>}
+                {import.meta.env.DEV && p.todo.length > 0 && <p class="todo">[TODO] {p.todo.join(", ")}</p>}
               </li>
             );
           })}
@@ -163,7 +166,7 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
       <div class="wrap grid">
         <h2 id="about-title" class="about__title" data-split>{t.about.title}</h2>
         <div class="about__body stack measure">
-          {t.about.paragraphs.map((text) => <p data-reveal>{text}</p>)}
+          {t.about.paragraphs.map(pub).filter(Boolean).map((text) => <p data-reveal>{text}</p>)}
           <p data-reveal><span class="label muted">{t.about.outside.label}</span><br />{t.about.outside.text}</p>
         </div>
       </div>
@@ -189,7 +192,7 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
 
   <footer class="site-footer">
     <div class="wrap">
-      <p class="todo">{t.footer.line}</p>
+      {footerLine && <p class="todo">{footerLine}</p>}
       <ul class="footer-links label">
         <li><a href={mailto}>{t.contact.buttons.email}</a></li>
         <li><a href={t.links.linkedin} rel="noopener">{t.contact.buttons.linkedin}</a></li>
