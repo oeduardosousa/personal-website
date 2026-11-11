@@ -79,6 +79,12 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title" data-hero>
+      <div class="wrap hero__top">
+        <figure class="hero__photo">
+          <img src={t.hero.photo.src} alt={t.hero.photo.alt} width="800" height="800" fetchpriority="high" decoding="async" />
+          <figcaption class="label muted">{t.hero.photo.caption}</figcaption>
+        </figure>
+      </div>
       <div class="wrap">
         <h1 id="hero-title" aria-label={t.name} data-kinetic>
           <span aria-hidden="true">
@@ -167,9 +173,6 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
       <div class="wrap grid">
         <div class="about__side">
           <h2 id="about-title" class="about__title" data-split>{t.about.title}</h2>
-          <figure class="about__photo" data-reveal>
-            <img src={t.about.photo.src} alt={t.about.photo.alt} width="800" height="800" loading="lazy" decoding="async" />
-          </figure>
         </div>
         <div class="about__body stack measure">
           {t.about.paragraphs.map(pub).filter(Boolean).map((text) => <p data-reveal>{text}</p>)}

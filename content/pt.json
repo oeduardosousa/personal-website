@@ -29,7 +29,12 @@
     "theme": "Trocar tema"
   },
   "hero": {
-    "role": "Eu faço sites e sistemas interativos.",
+    "role": "Eu construo sites e apps do zero ao ar.",
+    "photo": {
+      "src": "/assets/portrait.webp",
+      "alt": "Eduardo Sousa sorrindo num evento de tecnologia, de camiseta escura e cordão amarelo.",
+      "caption": "Num evento dev."
+    },
     "note": "[TODO] Uma frase honesta sobre pelo que eu quero ser contratado.",
     "terminal": {
       "fallback": "Belo Horizonte, Brasil. GMT-3."
@@ -68,10 +73,6 @@
   },
   "about": {
     "title": "Sobre",
-    "photo": {
-      "src": "/assets/portrait.webp",
-      "alt": "Eduardo Sousa sorrindo, de camiseta escura e cordão amarelo."
-    },
     "paragraphs": [
       "Sou de Belo Horizonte, Brasil.",
       "Meus pais me matricularam num curso técnico junto com o ensino médio. Comecei a pesquisar a área por conta própria. Gostei muito.",
