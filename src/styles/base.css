@@ -155,6 +155,11 @@ a:hover { text-decoration-thickness: 2px; }
 .hero__meta { display: grid; gap: var(--space-8); }
 .hero__role { font-size: var(--text-title); font-weight: var(--weight-title); line-height: var(--leading-title); max-width: 24ch; }
 .hero__note { margin-top: var(--space-4); max-width: 44ch; }
+.hero__cta { margin-top: var(--space-6); }
+/* Phones: no forced full-height hero, so the name sits right under the header instead of floating in empty space. */
+@media (max-width: 959px) {
+  .hero { min-height: 0; justify-content: flex-start; padding-block: var(--space-12) var(--space-16); }
+}
 .terminal {
   display: flex; align-items: center; gap: var(--space-3);
   min-height: 4.5rem; /* room for two lines: the live sentence never shifts the layout */
@@ -205,6 +210,7 @@ h2 { margin-bottom: var(--space-8); }
 .project { counter-increment: p; padding-block: var(--space-8); border-top: var(--border); }
 .project::before { content: counter(p, decimal-leading-zero); display: block; margin-bottom: var(--space-4); font-family: var(--font-mono); font-size: var(--text-label); color: var(--color-text-muted); }
 .project h3 a { position: relative; display: inline-block; color: var(--color-text); text-decoration: none; }
+.project h3 a::before { content: ""; position: absolute; inset: -7px 0; } /* 44px tap area, layout unchanged */
 .project h3 a::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -0.06em; height: 0.07em;
   background: var(--color-accent-text); transform: scaleX(0); transform-origin: left;
