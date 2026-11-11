@@ -158,8 +158,8 @@ a:hover { text-decoration-thickness: 2px; }
 .hero__frame { position: relative; isolation: isolate; }
 .hero__outline { position: absolute; inset: 0; z-index: -1; border: 1px solid var(--color-accent-text); border-radius: var(--radius-md); translate: 6px 6px; }
 .hero__img { position: relative; overflow: hidden; border-radius: var(--radius-md); background: var(--color-surface); }
-.hero__float { aspect-ratio: 4 / 5; }
-.hero__img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 52% 50%; }
+.hero__float { aspect-ratio: 1; }
+.hero__img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
 .hero__cover { position: absolute; inset: 0; background: var(--color-bg); transform: scaleY(0); transform-origin: 50% 0; }
 .hero__tag { display: none; }
 .hero__meta { grid-column: 1 / -1; display: grid; gap: var(--space-8); }
@@ -191,7 +191,7 @@ a:hover { text-decoration-thickness: 2px; }
   .hero__meta { grid-column: 1 / 8; grid-row: 2; }
   .hero__photo {
     grid-column: 8 / -1; grid-row: 1 / span 2; align-self: center; justify-self: end;
-    width: min(100%, calc((100svh - 240px) * 0.8)); margin: 0 14px 14px 0;
+    width: min(100%, calc(100svh - 240px)); margin: 0 14px 14px 0;
   }
   .hero__outline { translate: 14px 14px; }
   .hero__tag {
