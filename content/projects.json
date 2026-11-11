@@ -8,8 +8,13 @@
       "en": "A site for a real estate agency in Belo Horizonte. One view for buyers, one for the agency.",
       "pt": "Um site para uma imobiliária de Belo Horizonte. Uma visão para quem compra, outra para a imobiliária."
     },
-    "tags": [],
-    "links": { "repo": null, "live": "https://real-estate-puce-iota.vercel.app/" },
+    "tags": [
+      "Next.js"
+    ],
+    "links": {
+      "repo": null,
+      "live": "https://real-estate-puce-iota.vercel.app/"
+    },
     "image": {
       "src": "real-estate.webp",
       "alt": {
@@ -17,7 +22,7 @@
         "pt": "Página inicial do site da imobiliária: título grande em serifa, três cartões de imóveis e formas suaves de montanha."
       }
     },
-    "todo": ["repo link", "stack tags"]
+    "todo": []
   },
   {
     "id": "devboard",
@@ -28,7 +33,10 @@
       "en": "A personal project management dashboard. Create projects and tasks, track what's done, see the progress.",
       "pt": "Um painel pessoal de gerenciamento de projetos. Crie projetos e tarefas, marque o que acabou e veja o progresso."
     },
-    "tags": ["JavaScript"],
+    "tags": [
+      "React",
+      "JavaScript"
+    ],
     "links": {
       "repo": "https://github.com/oeduardosousa/devboard",
       "live": "https://devboard-tan-phi.vercel.app/"
@@ -40,7 +48,7 @@
         "pt": "Painel do DevBoard em fundo escuro, com dados de exemplo: três projetos, cada um com uma barra de progresso roxa."
       }
     },
-    "todo": ["problem / what I did / result"]
+    "todo": []
   },
   {
     "id": "beauty-salon",
@@ -51,8 +59,13 @@
       "en": "A beauty salon site with a client view and a staff view. All data is simulated in the browser.",
       "pt": "Um site de salão de beleza com visão da cliente e da equipe. Todos os dados são simulados no navegador."
     },
-    "tags": [],
-    "links": { "repo": null, "live": "https://beauty-salon-chi-mauve.vercel.app/" },
+    "tags": [
+      "Astro"
+    ],
+    "links": {
+      "repo": null,
+      "live": "https://beauty-salon-chi-mauve.vercel.app/"
+    },
     "image": {
       "src": "beauty-salon.webp",
       "alt": {
@@ -60,7 +73,7 @@
         "pt": "Tela de entrada do site do salão: dois cartões, um para clientes em rosa e outro para a equipe em ameixa escura."
       }
     },
-    "todo": ["repo link", "stack tags"]
+    "todo": []
   },
   {
     "id": "barber-shop-portfolio",
@@ -71,8 +84,13 @@
       "en": "A barbershop demo. Clients book a chair. Barbers see a day schedule with simulated times.",
       "pt": "Uma demo de barbearia. O cliente reserva uma cadeira. O barbeiro vê a agenda do dia, com horários simulados."
     },
-    "tags": [],
-    "links": { "repo": null, "live": "https://barber-shop-portfolio-weld.vercel.app/" },
+    "tags": [
+      "Next.js"
+    ],
+    "links": {
+      "repo": null,
+      "live": "https://barber-shop-portfolio-weld.vercel.app/"
+    },
     "image": {
       "src": "barber-shop-portfolio.webp",
       "alt": {
@@ -80,7 +98,7 @@
         "pt": "Tela de entrada da demo da barbearia em fundo escuro: um cartão para clientes e outro para barbeiros."
       }
     },
-    "todo": ["repo link", "stack tags"]
+    "todo": []
   },
   {
     "id": "advocacy",
@@ -91,8 +109,13 @@
       "en": "A concept site for a law firm. Six areas of law, plain language, one clear way to get in touch.",
       "pt": "Um site conceito para um escritório de advocacia. Seis áreas do direito, linguagem clara e um jeito simples de falar com o escritório."
     },
-    "tags": [],
-    "links": { "repo": null, "live": "https://advocacy-inky.vercel.app/" },
+    "tags": [
+      "Next.js"
+    ],
+    "links": {
+      "repo": null,
+      "live": "https://advocacy-inky.vercel.app/"
+    },
     "image": {
       "src": "advocacy.webp",
       "alt": {
@@ -100,7 +123,7 @@
         "pt": "Página inicial do conceito do escritório: título grande em serifa, botão bordô de contato e uma ilustração de papéis e um lápis."
       }
     },
-    "todo": ["repo link", "stack tags"]
+    "todo": []
   },
   {
     "id": "cine-scope",
@@ -111,32 +134,63 @@
       "en": "A React guide for movie lovers to find their next binge-watch.",
       "pt": "Um guia em React para quem ama filmes achar a próxima maratona."
     },
-    "tags": ["React", "JavaScript"],
+    "tags": [
+      "React",
+      "JavaScript"
+    ],
     "links": {
       "repo": "https://github.com/oeduardosousa/cine-scope",
       "live": "https://cine-scope-react28.vercel.app/"
     },
-    "image": null,
-    "todo": ["screenshot", "problem / what I did / result"]
+    "image": {
+      "src": "cine-scope.webp",
+      "alt": {
+        "en": "CineScope home page on a dark background: a featured movie with its synopsis, a search bar and a red \"Ver detalhes\" button.",
+        "pt": "Página inicial do CineScope em fundo escuro: um filme em destaque com a sinopse, uma barra de busca e um botão vermelho \"Ver detalhes\"."
+      }
+    },
+    "todo": []
   },
   {
     "id": "simulador-enem",
     "published": false,
     "title": "simulador-enem",
-    "summary": { "en": "[TODO]", "pt": "[TODO]" },
+    "summary": {
+      "en": "[TODO]",
+      "pt": "[TODO]"
+    },
     "tags": [],
-    "links": { "repo": null, "live": null },
+    "links": {
+      "repo": null,
+      "live": null
+    },
     "image": null,
-    "todo": ["what it is", "live URL", "screenshot", "set published to true"]
+    "todo": [
+      "what it is",
+      "live URL",
+      "screenshot",
+      "set published to true"
+    ]
   },
   {
     "id": "waterproofing",
     "published": false,
     "title": "waterproofing",
-    "summary": { "en": "[TODO]", "pt": "[TODO]" },
+    "summary": {
+      "en": "[TODO]",
+      "pt": "[TODO]"
+    },
     "tags": [],
-    "links": { "repo": null, "live": null },
+    "links": {
+      "repo": null,
+      "live": null
+    },
     "image": null,
-    "todo": ["what it is", "live URL", "screenshot", "set published to true"]
+    "todo": [
+      "what it is",
+      "live URL",
+      "screenshot",
+      "set published to true"
+    ]
   }
 ]
