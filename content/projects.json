@@ -36,11 +36,11 @@
     "image": {
       "src": "devboard.webp",
       "alt": {
-        "en": "DevBoard dashboard on a dark background, with counters for projects, tasks and completed work, all at zero.",
-        "pt": "Painel do DevBoard em fundo escuro, com contadores de projetos, tarefas e concluídas, todos em zero."
+        "en": "DevBoard dashboard on a dark background, with sample data: three projects, each with a purple progress bar.",
+        "pt": "Painel do DevBoard em fundo escuro, com dados de exemplo: três projetos, cada um com uma barra de progresso roxa."
       }
     },
-    "todo": ["a screenshot with sample data instead of the empty state", "problem / what I did / result"]
+    "todo": ["problem / what I did / result"]
   },
   {
     "id": "beauty-salon",
