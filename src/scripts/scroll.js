@@ -39,6 +39,15 @@ export function initScroll() {
       const ease = "expo.out";
       const belowFold = (el) => el.getBoundingClientRect().top > innerHeight * 0.9;
 
+      // Hero photo drifts up a little as the hero leaves. Transform and opacity only; none under reduced motion.
+      const photo = document.querySelector("[data-photo]");
+      if (photo && !reduced) {
+        gsap.to(photo, {
+          y: full ? -70 : -28, opacity: 0.55, ease: "none",
+          scrollTrigger: { trigger: "[data-hero]", start: "top top", end: "bottom top", scrub: 0.6 },
+        });
+      }
+
       // Create in document order so ScrollTrigger measures pin spacing correctly.
       const targets = document.querySelectorAll("[data-split], [data-reveal], [data-work]");
       targets.forEach((el) => {

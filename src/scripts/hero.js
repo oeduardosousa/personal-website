@@ -37,9 +37,67 @@ export function initHero() {
           resolve();
         },
       });
-      tl.fromTo(letters, { yPercent: 70, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.7, stagger: 0.04 })
+      // Photo: a cover panel wipes up (scaleY, not clip-path) while the image settles from 1.12 to 1.
+      const cover = document.querySelector(".hero__cover");
+      const float = document.querySelector("[data-photo-float]");
+      const outline = document.querySelector(".hero__outline");
+      const tag = document.querySelector(".hero__tag");
+      if (cover && float) {
+        tl.fromTo(cover, { scaleY: 1 }, { scaleY: 0, duration: 0.9, ease: "expo.inOut" }, 0.15)
+          .fromTo(float, { scale: 1.12 }, { scale: 1, duration: 1.3, ease: "expo.out" }, 0.15)
+          .fromTo(outline, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.8)
+          .fromTo(tag, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5 }, 1.0);
+      }
+      tl.fromTo(letters, { yPercent: 70, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.7, stagger: 0.04 }, 0)
         .fromTo(lead, { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, "-=0.35")
         .fromTo(terminal, { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, "-=0.35");
+    });
+  }
+
+  // --- Photo: idle float (every device), pointer tilt (fine pointers only). Transform only. ---
+  const photo = document.querySelector("[data-photo]");
+  const frame = document.querySelector("[data-photo-frame]");
+  const float = document.querySelector("[data-photo-float]");
+  const outline = document.querySelector(".hero__outline");
+  if (photo && frame && float) {
+    const pm = gsap.matchMedia();
+    pm.add("(prefers-reduced-motion: no-preference)", () => {
+      const bob = gsap.to(float, { y: -6, duration: 3.4, ease: "sine.inOut", yoyo: true, repeat: -1, paused: true });
+      introDone.then(() => bob.play());
+      // No work while the hero is off screen.
+      const io = new IntersectionObserver(([e]) => (e.isIntersecting ? bob.play() : bob.pause()));
+      io.observe(photo);
+      return () => { io.disconnect(); bob.kill(); gsap.set(float, { clearProps: "y" }); };
+    });
+    pm.add("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)", () => {
+      gsap.set(frame, { transformPerspective: 900 });
+      const cfg = { duration: 1.1, ease: "power3.out" };
+      const rx = gsap.quickTo(frame, "rotationX", cfg);
+      const ry = gsap.quickTo(frame, "rotationY", cfg);
+      const fx = gsap.quickTo(frame, "x", cfg);
+      const fy = gsap.quickTo(frame, "y", cfg);
+      // The outline drifts the other way: a little depth, no extra elements.
+      const ox = gsap.quickTo(outline, "x", cfg);
+      const oy = gsap.quickTo(outline, "y", cfg);
+      let ready = false;
+      introDone.then(() => { ready = true; });
+      const onMove = (e) => {
+        if (!ready) return;
+        const nx = (e.clientX / innerWidth - 0.5) * 2; // -1..1, no layout reads
+        const ny = (e.clientY / innerHeight - 0.5) * 2;
+        ry(nx * 7); rx(-ny * 5);
+        fx(nx * 10); fy(ny * 8);
+        ox(-nx * 12); oy(-ny * 10);
+      };
+      const reset = () => { rx(0); ry(0); fx(0); fy(0); ox(0); oy(0); };
+      const hero = document.querySelector("[data-hero]");
+      hero.addEventListener("pointermove", onMove);
+      hero.addEventListener("pointerleave", reset);
+      return () => {
+        hero.removeEventListener("pointermove", onMove);
+        hero.removeEventListener("pointerleave", reset);
+        gsap.set([frame, outline], { clearProps: "transform" });
+      };
     });
   }
 

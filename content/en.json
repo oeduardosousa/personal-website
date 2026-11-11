@@ -45,11 +45,11 @@
     "items": [
       {
         "title": "Websites",
-        "text": "Sites for small businesses in different niches. Practice builds so far."
+        "text": "Websites for small businesses in all kinds of niches."
       },
       {
         "title": "Interactive systems",
-        "text": "React apps. A movie guide, a project dashboard."
+        "text": "Web apps with React, Next and whatever else the job needs."
       }
     ],
     "tools": {
@@ -65,7 +65,7 @@
   },
   "work": {
     "title": "Selected work",
-    "intro": "Practice builds. Real clients are next.",
+    "intro": "Things I have built.",
     "links": {
       "repo": "Code",
       "live": "Live"

@@ -79,13 +79,7 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title" data-hero>
-      <div class="wrap hero__top">
-        <figure class="hero__photo">
-          <img src={t.hero.photo.src} alt={t.hero.photo.alt} width="800" height="800" fetchpriority="high" decoding="async" />
-          <figcaption class="label muted">{t.hero.photo.caption}</figcaption>
-        </figure>
-      </div>
-      <div class="wrap">
+      <div class="wrap hero__grid">
         <h1 id="hero-title" aria-label={t.name} data-kinetic>
           <span aria-hidden="true">
             {words.map((word, i) => (
@@ -95,6 +89,19 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
             ))}
           </span>
         </h1>
+
+        <figure class="hero__photo" data-photo>
+          <div class="hero__frame" data-photo-frame>
+            <span class="hero__outline" aria-hidden="true"></span>
+            <div class="hero__img">
+              <div class="hero__float" data-photo-float>
+                <img src={t.hero.photo.src} alt={t.hero.photo.alt} width="800" height="800" fetchpriority="high" decoding="async" />
+              </div>
+              <span class="hero__cover" aria-hidden="true"></span>
+            </div>
+            <figcaption class="hero__tag label">{t.hero.photo.caption}</figcaption>
+          </div>
+        </figure>
 
         <div class="hero__meta">
           <div class="hero__lead">

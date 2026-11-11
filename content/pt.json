@@ -45,11 +45,11 @@
     "items": [
       {
         "title": "Sites",
-        "text": "Sites para pequenos negócios de nichos diferentes. Até agora, projetos de treino."
+        "text": "Sites para pequenos negócios de todo tipo de nicho."
       },
       {
         "title": "Sistemas interativos",
-        "text": "Apps em React. Um guia de filmes, um painel de projetos."
+        "text": "Apps web com React, Next e o que mais o projeto pedir."
       }
     ],
     "tools": {
@@ -65,7 +65,7 @@
   },
   "work": {
     "title": "Trabalhos selecionados",
-    "intro": "Projetos de treino. Clientes de verdade vêm depois.",
+    "intro": "Coisas que eu construí.",
     "links": {
       "repo": "Código",
       "live": "Ao vivo"
