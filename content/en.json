@@ -35,7 +35,7 @@
       "alt": "Eduardo Sousa smiling at DevFest Belo Horizonte, in front of the event backdrop, wearing a dark t-shirt and a yellow lanyard.",
       "caption": "DevFest Belo Horizonte."
     },
-    "note": "[TODO] One honest sentence on what I want to be hired for.",
+    "note": "Need a site or a web app? I can build it and ship it.",
     "terminal": {
       "fallback": "Belo Horizonte, Brazil. GMT-3."
     }
@@ -58,9 +58,16 @@
         "GitHub",
         "VS Code",
         "Cloudflare",
-        "Claude Code"
-      ],
-      "todo": "[TODO] Confirm which languages and stacks I claim (JavaScript, React, Python, C, HTML)."
+        "Claude Code",
+        "JavaScript",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Astro",
+        "Python",
+        "C",
+        "HTML"
+      ]
     }
   },
   "work": {
@@ -76,7 +83,7 @@
     "paragraphs": [
       "I'm from Belo Horizonte, Brazil.",
       "My parents signed me up for a technical program alongside high school. I started reading about the field on my own. I loved it.",
-      "I want to be a reference in this field someday. [TODO] A reference in what?"
+      "I want to be a reference in the dev scene someday."
     ],
     "outside": {
       "label": "Outside code",
@@ -96,7 +103,7 @@
     "copyFailed": "Could not copy"
   },
   "footer": {
-    "line": "[TODO] One opinionated sentence, to write with Eduardo.",
+    "line": "No trackers. No popups. Just the site.",
     "rights": "Eduardo Sousa",
     "forget": "forget me",
     "forgetNote": "Clears what this browser remembers about your visit."

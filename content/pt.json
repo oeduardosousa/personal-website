@@ -35,7 +35,7 @@
       "alt": "Eduardo Sousa sorrindo no DevFest Belo Horizonte, diante do painel do evento, de camiseta escura e cordão amarelo.",
       "caption": "DevFest Belo Horizonte."
     },
-    "note": "[TODO] Uma frase honesta sobre pelo que eu quero ser contratado.",
+    "note": "Precisa de um site ou de um app web? Eu construo e coloco no ar.",
     "terminal": {
       "fallback": "Belo Horizonte, Brasil. GMT-3."
     }
@@ -58,9 +58,16 @@
         "GitHub",
         "VS Code",
         "Cloudflare",
-        "Claude Code"
-      ],
-      "todo": "[TODO] Confirmar quais linguagens e stacks eu posso citar (JavaScript, React, Python, C, HTML)."
+        "Claude Code",
+        "JavaScript",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Astro",
+        "Python",
+        "C",
+        "HTML"
+      ]
     }
   },
   "work": {
@@ -76,7 +83,7 @@
     "paragraphs": [
       "Sou de Belo Horizonte, Brasil.",
       "Meus pais me matricularam num curso técnico junto com o ensino médio. Comecei a pesquisar a área por conta própria. Gostei muito.",
-      "Quero ser referência nessa área um dia. [TODO] Referência em quê?"
+      "Quero ser referência na cena dev um dia."
     ],
     "outside": {
       "label": "Fora do código",
@@ -96,7 +103,7 @@
     "copyFailed": "Não consegui copiar"
   },
   "footer": {
-    "line": "[TODO] Uma frase opinativa, para escrever com o Eduardo.",
+    "line": "Sem rastreadores. Sem pop-ups. Só o site.",
     "rights": "Eduardo Sousa",
     "forget": "esquecer de mim",
     "forgetNote": "Apaga o que este navegador lembra da sua visita."

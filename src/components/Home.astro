@@ -208,7 +208,7 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
 
   <footer class="site-footer">
     <div class="wrap">
-      {footerLine && <p class="todo">{footerLine}</p>}
+      {footerLine && <p>{footerLine}</p>}
       <ul class="footer-links label">
         <li><a href={mailto}>{t.contact.buttons.email}</a></li>
         <li><a href={t.links.linkedin} rel="noopener">{t.contact.buttons.linkedin}</a></li>

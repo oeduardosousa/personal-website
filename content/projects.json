@@ -114,10 +114,10 @@
     "tags": ["React", "JavaScript"],
     "links": {
       "repo": "https://github.com/oeduardosousa/cine-scope",
-      "live": null
+      "live": "https://cine-scope-react28.vercel.app/"
     },
     "image": null,
-    "todo": ["live URL (deployed on Vercel as cine-scope-react28)", "screenshot", "problem / what I did / result"]
+    "todo": ["screenshot", "problem / what I did / result"]
   },
   {
     "id": "simulador-enem",
