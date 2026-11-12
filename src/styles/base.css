@@ -126,6 +126,12 @@ a:hover { text-decoration-thickness: 2px; }
   color: var(--color-text); text-decoration: none; border-radius: var(--radius-sm);
 }
 .tool:active { transform: scale(0.97); transition: transform var(--dur-press) var(--ease-out); }
+/* Theme toggle: the half-moon turns over with the theme. */
+.tool--icon svg { transition: transform 300ms var(--ease-out); }
+:root[data-theme="light"] .tool--icon svg { transform: rotate(180deg); }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .tool--icon svg { transform: rotate(180deg); }
+}
 .menu-btn, .tool--contact, .nav-lang { display: none; }
 .menu-btn__close { display: none; }
 
@@ -300,6 +306,9 @@ h2 { margin-bottom: var(--space-8); }
 .project .tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-block: var(--space-4); }
 .project .links { display: flex; flex-wrap: wrap; gap: var(--space-6); }
 .project .links a { display: inline-flex; align-items: center; min-height: var(--tap); font-family: var(--font-mono); font-size: var(--text-label); }
+/* The arrow on outbound links leans out on press, and on hover with a mouse. */
+.arrow { flex: none; margin-left: 6px; transition: transform 160ms var(--ease-out); }
+.project .links a:active .arrow { transform: translate(2px, -2px); }
 .project figure { margin-bottom: var(--space-4); border: var(--border); border-radius: var(--radius-md); overflow: hidden; }
 .project figure a { display: block; }
 .project figure img { aspect-ratio: 16 / 10; width: 100%; object-fit: cover; transition: transform 500ms var(--ease-out); }
@@ -320,6 +329,7 @@ h2 { margin-bottom: var(--space-8); }
   .project--end > figure { grid-column: 1; grid-row: 2 / span 5; margin-bottom: 0; }
 }
 @media (hover: hover) and (pointer: fine) {
+  .project .links a:hover .arrow { transform: translate(2px, -2px); }
   .project:hover h3 a::after { transform: scaleX(1); }
   .project:hover figure img { transform: scale(1.03); }
 }
@@ -469,6 +479,6 @@ h2 { margin-bottom: var(--space-8); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .caret { animation: none; }
-  .site-nav, .site-nav li, .site-header::before, .site-nav a::after, .project figure img { transition: none !important; }
+  .site-nav, .site-nav li, .site-header::before, .site-nav a::after, .project figure img, .tool--icon svg, .arrow { transition: none !important; }
   .project:hover figure img { transform: none; }
 }

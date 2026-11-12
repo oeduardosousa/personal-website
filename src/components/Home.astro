@@ -200,8 +200,8 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
                   </ul>
                 )}
                 <p class="links">
-                  {p.links.repo && <a href={p.links.repo} rel="noopener">{t.work.links.repo}</a>}
-                  {p.links.live && <a href={p.links.live} rel="noopener">{t.work.links.live}</a>}
+                  {p.links.repo && <a href={p.links.repo} rel="noopener">{t.work.links.repo}<svg class="arrow" viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9.5l7-7M4 2.5h5.5v5.5"></path></svg></a>}
+                  {p.links.live && <a href={p.links.live} rel="noopener">{t.work.links.live}<svg class="arrow" viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9.5l7-7M4 2.5h5.5v5.5"></path></svg></a>}
                 </p>
                 {import.meta.env.DEV && p.todo.length > 0 && <p class="todo">[TODO] {p.todo.join(", ")}</p>}
               </li>

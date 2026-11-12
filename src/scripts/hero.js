@@ -54,6 +54,9 @@ export function initHero() {
     });
   }
 
+  // Tap or click the name and it waves back (the only name reaction phones get). Not during the intro.
+  introDone.then(() => h1.addEventListener("click", wave));
+
   // --- Photo: idle float (every device), pointer tilt (fine pointers only). Transform only. ---
   const photo = document.querySelector("[data-photo]");
   const frame = document.querySelector("[data-photo-frame]");
