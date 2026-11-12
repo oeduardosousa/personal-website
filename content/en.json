@@ -45,7 +45,7 @@
     "items": [
       {
         "title": "Websites",
-        "text": "Websites for small businesses in all kinds of niches."
+        "text": "I build websites for businesses in all kinds of niches."
       },
       {
         "title": "Interactive systems",
@@ -72,7 +72,7 @@
   },
   "work": {
     "title": "Selected work",
-    "intro": "Things I have built.",
+    "intro": "Platforms I build.",
     "links": {
       "repo": "Code",
       "live": "Live"

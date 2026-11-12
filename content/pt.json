@@ -45,7 +45,7 @@
     "items": [
       {
         "title": "Sites",
-        "text": "Sites para pequenos negócios de todo tipo de nicho."
+        "text": "Faço sites para negócios de todo tipo de nicho."
       },
       {
         "title": "Sistemas interativos",
@@ -72,7 +72,7 @@
   },
   "work": {
     "title": "Trabalhos selecionados",
-    "intro": "Coisas que eu construí.",
+    "intro": "Plataformas que eu faço.",
     "links": {
       "repo": "Código",
       "live": "Ao vivo"
