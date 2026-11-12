@@ -72,7 +72,7 @@
   },
   "work": {
     "title": "Selected work",
-    "intro": "Platforms I build.",
+    "intro": "Platforms I've built.",
     "links": {
       "repo": "Code",
       "live": "Live"
@@ -103,7 +103,6 @@
     "copyFailed": "Could not copy"
   },
   "footer": {
-    "line": "No trackers. No popups. Just the site.",
     "rights": "Eduardo Sousa",
     "forget": "forget me",
     "forgetNote": "Clears what this browser remembers about your visit."

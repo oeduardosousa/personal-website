@@ -72,7 +72,7 @@
   },
   "work": {
     "title": "Trabalhos selecionados",
-    "intro": "Plataformas que eu faço.",
+    "intro": "Plataformas que construí.",
     "links": {
       "repo": "Código",
       "live": "Ao vivo"
@@ -103,7 +103,6 @@
     "copyFailed": "Não consegui copiar"
   },
   "footer": {
-    "line": "Sem rastreadores. Sem pop-ups. Só o site.",
     "rights": "Eduardo Sousa",
     "forget": "esquecer de mim",
     "forgetNote": "Apaga o que este navegador lembra da sua visita."
