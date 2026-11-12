@@ -44,10 +44,12 @@
     "title": "What I do",
     "items": [
       {
+        "icon": "site",
         "title": "Websites",
         "text": "I build websites for businesses in all kinds of niches."
       },
       {
+        "icon": "app",
         "title": "Interactive systems",
         "text": "Web apps with React, Next and whatever else the job needs."
       }

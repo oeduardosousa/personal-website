@@ -236,6 +236,45 @@ h2 { margin-bottom: var(--space-8); }
 .do-list { display: grid; gap: var(--space-8); }
 .do-list li { padding-top: var(--space-4); border-top: var(--border); }
 .do-list h3 { margin-bottom: var(--space-2); }
+/* Small drawings beside each item: a page building itself, a cursor flipping a switch. */
+.do-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--space-4); align-items: start; }
+.doodle { display: block; width: clamp(84px, 24vw, 132px); height: auto; margin-top: var(--space-1); overflow: visible; }
+.doodle__rule, .doodle__track { stroke: var(--color-border); }
+.doodle__dots { stroke: var(--color-text-muted); stroke-width: 3; }
+.doodle__bar { fill: var(--color-text-muted); stroke: none; }
+.doodle__bar--strong { fill: var(--color-text); }
+.doodle__accent { fill: var(--color-accent-text); stroke: none; }
+.doodle__knob { fill: var(--color-text); stroke: none; }
+.doodle__cursor { fill: var(--color-bg); transform: translate(84px, 64px); }
+.doodle__grow, .doodle__fill { transform-box: fill-box; transform-origin: left center; }
+.doodle__pop { transform-box: fill-box; transform-origin: center; }
+.doodle__fill { transform: scaleX(0.7); }
+.doodle__knob { transform: translateX(16px); }
+@media (prefers-reduced-motion: no-preference) {
+  .doodle__grow { animation: doodle-grow 7s var(--ease-out) calc(var(--d) * 0.45s) infinite backwards; }
+  .doodle__pop { animation: doodle-pop 7s var(--ease-out) calc(var(--d) * 0.45s) infinite backwards; }
+  .doodle__cursor { animation: doodle-cursor 6s var(--ease-in-out) infinite; }
+  .doodle__knob { animation: doodle-knob 6s var(--ease-in-out) infinite; }
+  .doodle__fill { animation: doodle-fill 6s var(--ease-in-out) infinite; }
+  /* Loops rest while their drawing is off screen (site.js sets .is-off). */
+  .is-off, .is-off * { animation-play-state: paused !important; }
+}
+@keyframes doodle-grow { 0% { transform: scaleX(0); opacity: 1; } 10%, 80% { transform: scaleX(1); opacity: 1; } 85%, 100% { transform: scaleX(1); opacity: 0; } }
+@keyframes doodle-pop { 0% { transform: scale(0.9); opacity: 0; } 8%, 80% { transform: scale(1); opacity: 1; } 85%, 100% { transform: scale(1); opacity: 0; } }
+@keyframes doodle-cursor {
+  0%, 8% { transform: translate(84px, 64px); }
+  24%, 26% { transform: translate(30px, 31px); }
+  28% { transform: translate(30px, 31px) scale(0.86); }
+  31%, 34% { transform: translate(30px, 31px); }
+  48%, 58% { transform: translate(84px, 64px); }
+  72%, 74% { transform: translate(30px, 31px); }
+  76% { transform: translate(30px, 31px) scale(0.86); }
+  79%, 82% { transform: translate(30px, 31px); }
+  96%, 100% { transform: translate(84px, 64px); }
+}
+@keyframes doodle-knob { 0%, 28% { transform: translateX(0); } 33%, 76% { transform: translateX(16px); } 81%, 100% { transform: translateX(0); } }
+@keyframes doodle-fill { 0%, 30% { transform: scaleX(0); } 46%, 76% { transform: scaleX(0.7); } 90%, 100% { transform: scaleX(0); } }
+
 .tools { margin-top: var(--space-12); }
 .tools ul { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-block: var(--space-2) var(--space-4); }
 @media (min-width: 960px) {

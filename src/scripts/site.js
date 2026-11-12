@@ -59,6 +59,21 @@ if ("IntersectionObserver" in window) {
   navLinks.forEach((_, id) => { const el = document.getElementById(id); if (el) spy.observe(el); });
 }
 
+// Small drawings: loops rest while off screen (.is-off), one-time entrances play on first sight (.is-seen).
+const anims = $$("[data-anim]");
+if ("IntersectionObserver" in window) {
+  const watch = new IntersectionObserver(
+    (entries) => entries.forEach((e) => {
+      e.target.classList.toggle("is-off", !e.isIntersecting);
+      if (e.intersectionRatio >= 0.4) e.target.classList.add("is-seen");
+    }),
+    { threshold: [0, 0.4] },
+  );
+  anims.forEach((el) => watch.observe(el));
+} else {
+  anims.forEach((el) => el.classList.add("is-seen"));
+}
+
 // Mobile full-screen menu.
 const btn = $("[data-menu-btn]");
 const nav = $("[data-nav]");

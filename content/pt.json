@@ -44,10 +44,12 @@
     "title": "O que eu faço",
     "items": [
       {
+        "icon": "site",
         "title": "Sites",
         "text": "Faço sites para negócios de todo tipo de nicho."
       },
       {
+        "icon": "app",
         "title": "Sistemas interativos",
         "text": "Apps web com React, Next e o que mais o projeto pedir."
       }

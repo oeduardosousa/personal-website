@@ -127,9 +127,35 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
         <div class="do__body">
           <ul class="do-list">
             {t.whatIDo.items.map((item) => (
-              <li data-reveal>
-                <h3>{item.title}</h3>
-                <p class="measure">{item.text}</p>
+              <li class:list={{ "do-item": item.icon }} data-reveal>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p class="measure">{item.text}</p>
+                </div>
+                {/* Decorative line art, same family as the typist. CSS only, transform and opacity. */}
+                {item.icon === "site" && (
+                  <svg class="doodle" viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-anim>
+                    <rect x="4" y="6" width="112" height="78" rx="8" class="typist__panel"></rect>
+                    <path d="M4 22h112" class="doodle__rule"></path>
+                    <path d="M14 14h.01M21 14h.01M28 14h.01" class="doodle__dots"></path>
+                    <rect x="14" y="31" width="26" height="3" rx="1.5" class="doodle__bar doodle__grow" style="--d:0"></rect>
+                    <rect x="14" y="42" width="50" height="6" rx="2" class="doodle__bar doodle__bar--strong doodle__grow" style="--d:1"></rect>
+                    <rect x="14" y="54" width="40" height="3" rx="1.5" class="doodle__bar doodle__grow" style="--d:2"></rect>
+                    <rect x="78" y="31" width="28" height="42" rx="3" class="doodle__pop" style="--d:3"></rect>
+                    <rect x="14" y="64" width="22" height="9" rx="2" class="doodle__accent doodle__pop" style="--d:4"></rect>
+                  </svg>
+                )}
+                {item.icon === "app" && (
+                  <svg class="doodle" viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-anim>
+                    <rect x="4" y="6" width="112" height="78" rx="8" class="typist__panel"></rect>
+                    <rect x="16" y="20" width="34" height="18" rx="9"></rect>
+                    <circle cx="25" cy="29" r="5" class="doodle__knob"></circle>
+                    <rect x="60" y="27.5" width="40" height="3" rx="1.5" class="doodle__bar"></rect>
+                    <rect x="16" y="54" width="88" height="6" rx="3" class="doodle__track"></rect>
+                    <rect x="16" y="54" width="88" height="6" rx="3" class="doodle__accent doodle__fill"></rect>
+                    <path d="M0 0v15l4.2-3.8 2.8 6.6 2.8-1.2-2.8-6.4h5.6z" class="doodle__cursor"></path>
+                  </svg>
+                )}
               </li>
             ))}
           </ul>
@@ -190,7 +216,7 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
         <div class="about__side">
           <h2 id="about-title" class="about__title" data-split>{t.about.title}</h2>
           {/* Decorative: someone typing, a small terminal filling up. CSS animation, transform and opacity only. */}
-          <svg class="typist" viewBox="0 0 320 220" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-reveal>
+          <svg class="typist" viewBox="0 0 320 220" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-reveal data-anim>
             <g class="typist__term">
               <rect x="196" y="8" width="112" height="80" rx="8" class="typist__panel"></rect>
               <path d="M210 22l5 4-5 4" class="typist__prompt"></path>
