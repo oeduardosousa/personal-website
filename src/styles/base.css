@@ -327,7 +327,16 @@ h2 { margin-bottom: var(--space-8); }
 /* About: the first line leads, the rest is body; "outside code" sits under a hairline. */
 .about__lead { font-size: var(--text-title); font-weight: var(--weight-title); line-height: var(--leading-title); text-wrap: balance; }
 .about__lead + p { margin-top: var(--space-8); }
-.about__outside { margin-top: var(--space-8); padding-top: var(--space-4); border-top: var(--border); }
+.about__outside { position: relative; margin-top: var(--space-8); padding-top: var(--space-4); border-top: var(--border); }
+
+/* A ball resting on the hairline. It rolls in once (1.5 turns over 1.5 circumferences) and hops when tapped. */
+.ball { position: absolute; right: 0; bottom: calc(100% + 1px); width: 28px; height: 28px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.ball::after { content: ""; position: absolute; inset: -8px; } /* 44px tap area */
+.ball svg { display: block; width: 100%; height: 100%; overflow: visible; }
+@media (prefers-reduced-motion: no-preference) {
+  .ball { transition: transform 1.3s var(--ease-out) 0.25s, opacity 0.3s var(--ease-out) 0.25s; }
+  .js .ball:not(.is-seen) { transform: translateX(-132px) rotate(-540deg); opacity: 0; }
+}
 
 /* Someone typing. Line art in the text color; the terminal fills up, clears and starts again. */
 .typist { display: block; width: min(100%, 320px); height: auto; margin-bottom: var(--space-12); overflow: visible; }
@@ -383,6 +392,22 @@ h2 { margin-bottom: var(--space-8); }
 }
 .contact__email { margin-top: var(--space-6); }
 
+/* Paper plane: flies in once, then floats. */
+.contact .wrap { position: relative; }
+.plane { display: block; width: 96px; margin-bottom: var(--space-6); }
+.plane svg { display: block; width: 100%; height: auto; overflow: visible; }
+.plane__trail { stroke: var(--color-text-muted); stroke-dasharray: 1 7; }
+.plane__body { transform-box: fill-box; transform-origin: center; }
+@media (min-width: 960px) {
+  .plane { position: absolute; right: var(--gutter); top: 0; width: clamp(140px, 16vw, 220px); margin: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .plane { transition: transform 0.9s var(--ease-out), opacity 0.4s var(--ease-out); }
+  .js .plane:not(.is-seen) { transform: translate(-48px, 32px) rotate(-6deg); opacity: 0; }
+  .plane__body { animation: plane-float 3.6s ease-in-out infinite alternate; }
+}
+@keyframes plane-float { from { transform: translateY(-3px) rotate(-1.5deg); } to { transform: translateY(3px) rotate(1.5deg); } }
+
 /* ---------- Palette ---------- */
 .palette-btn { display: none; }
 @media (min-width: 960px) { .palette-btn:not([hidden]) { display: inline-flex; } }
@@ -424,9 +449,16 @@ h2 { margin-bottom: var(--space-8); }
 /* Sign-off: the name once more, huge and quiet, running off the bottom edge. Decorative. */
 .footer-name {
   max-width: var(--wide); margin: var(--space-12) auto -0.16em; padding-inline: var(--gutter);
-  font-size: min(calc((100vw - 2 * var(--gutter)) / 7.55), 9.8rem); /* the name is about 7.5em wide: fills the column */ font-weight: var(--weight-hero); line-height: 0.8; letter-spacing: var(--tracking-display);
+  font-size: min(calc((100vw - 2 * var(--gutter)) / 7.75), 9.8rem); /* the name plus its caret is about 7.7em wide: fills the column */ font-weight: var(--weight-hero); line-height: 0.8; letter-spacing: var(--tracking-display);
   white-space: nowrap; color: var(--color-border); user-select: none;
 }
+.footer-caret { display: inline-block; width: 0.09em; height: 0.7em; margin-left: 0.06em; background: var(--color-accent-text); }
+@media (prefers-reduced-motion: no-preference) {
+  .js .footer-name:not(.is-seen) :is(.fch, .footer-caret) { opacity: 0; }
+  .footer-name.is-seen .fch { animation: type-in 1ms calc(var(--i) * 70ms + 200ms) backwards; }
+  .footer-name.is-seen .footer-caret { animation: type-in 1ms calc(var(--i) * 70ms + 200ms) backwards, blink 1.1s steps(1, end) calc(var(--i) * 70ms + 200ms) infinite; }
+}
+@keyframes type-in { from { opacity: 0; } }
 .site-footer .wrap { display: grid; gap: var(--space-4); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 0 var(--space-6); }
 .linklike { color: var(--color-accent-text); text-decoration: underline; text-underline-offset: 4px; min-height: var(--tap); }

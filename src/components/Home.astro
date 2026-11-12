@@ -240,13 +240,32 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
         </div>
         <div class="about__body stack measure">
           {t.about.paragraphs.map(pub).filter(Boolean).map((text, i) => <p class:list={{ about__lead: i === 0 }} data-reveal>{text}</p>)}
-          <p class="about__outside" data-reveal><span class="label muted">{t.about.outside.label}</span><br />{t.about.outside.text}</p>
+          <p class="about__outside" data-reveal>
+            {/* Decorative: a ball rolls in along the hairline and hops when tapped. */}
+            <span class="ball" aria-hidden="true" data-anim data-ball>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10.5" class="typist__body"></circle>
+                <path d="M12 8l3.8 2.76-1.45 4.48h-4.7L8.2 10.76z" fill="currentColor"></path>
+                <path d="M12 8V1.5M15.8 10.76L22 8.7M14.35 15.24l3.85 5.26M9.65 15.24L5.8 20.5M8.2 10.76L2 8.7"></path>
+              </svg>
+            </span>
+            <span class="label muted">{t.about.outside.label}</span><br />{t.about.outside.text}</p>
         </div>
       </div>
     </section>
 
     <section id="contact" class="contact" aria-labelledby="contact-title">
       <div class="wrap">
+        {/* Decorative: a paper plane, already on its way. */}
+        <span class="plane" aria-hidden="true" data-anim>
+          <svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 72c14-2 27-9 37-20" class="plane__trail"></path>
+            <g class="plane__body">
+              <path d="M44 40l68-30-28 60-14-22z" class="typist__body"></path>
+              <path d="M70 48l42-38M70 48l-2 16 9-8"></path>
+            </g>
+          </svg>
+        </span>
         <h2 id="contact-title" data-split>{t.contact.title}</h2>
         <p class="buttons" data-reveal>
           <a class="btn btn--primary" href={mailto}>{t.contact.buttons.email}</a>
@@ -277,7 +296,8 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
       </p>
       <p class="label muted">&copy; <span data-year>{buildYear}</span> {t.footer.rights}</p>
     </div>
-    <p class="footer-name" aria-hidden="true">{t.name}</p>
+    {/* The name once more, typed in letter by letter on first sight, then a caret. */}
+    <p class="footer-name" aria-hidden="true" data-anim>{[...t.name].map((ch, i) => (ch === " " ? " " : <span class="fch" style={`--i:${i}`}>{ch}</span>))}<span class="footer-caret" style={`--i:${t.name.length}`}></span></p>
   </footer>
   <script id="dyn" type="application/json" set:html={dynJson} />
 </Base>

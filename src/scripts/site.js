@@ -74,6 +74,22 @@ if ("IntersectionObserver" in window) {
   anims.forEach((el) => el.classList.add("is-seen"));
 }
 
+// The ball in About hops when tapped. Decorative: nothing depends on it.
+const ball = $("[data-ball]");
+ball?.addEventListener("pointerdown", () => {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  ball.firstElementChild.animate(
+    [
+      { transform: "translateY(0) rotate(0deg)", easing: "ease-out" },
+      { transform: "translateY(-24px) rotate(60deg)", easing: "ease-in", offset: 0.34 },
+      { transform: "translateY(0) rotate(116deg)", easing: "ease-out", offset: 0.68 },
+      { transform: "translateY(-6px) rotate(132deg)", easing: "ease-in", offset: 0.84 },
+      { transform: "translateY(0) rotate(144deg)" }, // 144deg = two fifths of a turn: the ball looks the same at rest
+    ],
+    { duration: 720 },
+  );
+});
+
 // Mobile full-screen menu.
 const btn = $("[data-menu-btn]");
 const nav = $("[data-nav]");
