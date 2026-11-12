@@ -229,6 +229,7 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
       </p>
       <p class="label muted">&copy; <span data-year>{buildYear}</span> {t.footer.rights}</p>
     </div>
+    <p class="footer-name" aria-hidden="true">{t.name}</p>
   </footer>
   <script id="dyn" type="application/json" set:html={dynJson} />
 </Base>

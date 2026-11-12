@@ -356,7 +356,13 @@ h2 { margin-bottom: var(--space-8); }
 .palette__status[data-state="fail"] { color: var(--color-error); }
 
 /* ---------- Footer ---------- */
-.site-footer { padding-block: var(--space-12); border-top: var(--border); }
+.site-footer { padding-block: var(--space-12) 0; border-top: var(--border); overflow: clip; }
+/* Sign-off: the name once more, huge and quiet, running off the bottom edge. Decorative. */
+.footer-name {
+  max-width: var(--wide); margin: var(--space-12) auto -0.16em; padding-inline: var(--gutter);
+  font-size: min(calc((100vw - 2 * var(--gutter)) / 7.55), 9.8rem); /* the name is about 7.5em wide: fills the column */ font-weight: var(--weight-hero); line-height: 0.8; letter-spacing: var(--tracking-display);
+  white-space: nowrap; color: var(--color-border); user-select: none;
+}
 .site-footer .wrap { display: grid; gap: var(--space-4); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 0 var(--space-6); }
 .linklike { color: var(--color-accent-text); text-decoration: underline; text-underline-offset: 4px; min-height: var(--tap); }
