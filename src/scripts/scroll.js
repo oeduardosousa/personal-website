@@ -124,14 +124,13 @@ function setupWork(work, { full, reduced, ease, belowFold }) {
     return;
   }
 
-  items.forEach((el) => {
-    if (!belowFold(el)) return;
-    gsap.set(el, reduced ? { opacity: 0 } : { opacity: 0, y: 24 });
-    ScrollTrigger.create({
-      trigger: el,
-      start: "top 90%",
-      once: true,
-      onEnter: () => gsap.to(el, { opacity: 1, y: 0, duration: reduced ? 0.4 : 0.6, ease, overwrite: true }),
-    });
+  // Projects that arrive together (one row) come in one after the other, 70ms apart.
+  const below = items.filter(belowFold);
+  if (!below.length) return;
+  gsap.set(below, reduced ? { opacity: 0 } : { opacity: 0, y: 24 });
+  ScrollTrigger.batch(below, {
+    start: "top 90%",
+    once: true,
+    onEnter: (batch) => gsap.to(batch, { opacity: 1, y: 0, duration: reduced ? 0.4 : 0.6, ease, stagger: 0.07, overwrite: true }),
   });
 }

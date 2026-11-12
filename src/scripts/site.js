@@ -33,9 +33,31 @@ $$("[data-year]").forEach((el) => { el.textContent = String(new Date().getFullYe
 
 // Header gets a hairline once the page has scrolled.
 const header = $("[data-header]");
-const onScroll = () => header?.classList.toggle("is-scrolled", window.scrollY > 8);
+const progress = $("[data-progress]");
+const onScroll = () => {
+  header?.classList.toggle("is-scrolled", window.scrollY > 8);
+  if (progress) {
+    const max = root.scrollHeight - innerHeight;
+    progress.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
+  }
+};
 addEventListener("scroll", onScroll, { passive: true });
 onScroll();
+
+// The nav marks the section crossing the middle of the screen.
+if ("IntersectionObserver" in window) {
+  const navLinks = new Map($$("[data-nav] a[href^='#']").map((a) => [a.getAttribute("href").slice(1), a]));
+  const spy = new IntersectionObserver(
+    (entries) => entries.forEach((e) => {
+      const link = navLinks.get(e.target.id);
+      if (!link) return;
+      if (e.isIntersecting) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    }),
+    { rootMargin: "-50% 0px -50% 0px" },
+  );
+  navLinks.forEach((_, id) => { const el = document.getElementById(id); if (el) spy.observe(el); });
+}
 
 // Mobile full-screen menu.
 const btn = $("[data-menu-btn]");

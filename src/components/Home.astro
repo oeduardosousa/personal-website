@@ -17,6 +17,8 @@ const words = t.name.split(" ");
 // The best project gets twice the space. If none is flagged, the first entry leads.
 const flagged = projects.findIndex((p) => p.featured);
 const wideIndex = projects.length ? (flagged === -1 ? 0 : flagged) : -1;
+// With the wide project first, rows are 8+4 then 4+4+4. A lone last project closes the grid wide, on the right.
+const endIndex = wideIndex === 0 && projects.length > 3 && projects.length % 3 === 0 ? projects.length - 1 : -1;
 
 const navLinks = [
   ["what-i-do", t.nav.whatIDo],
@@ -75,6 +77,7 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
         </button>
       </div>
     </div>
+    <span class="progress" aria-hidden="true" data-progress></span>
   </header>
 
   <main id="main">
@@ -149,10 +152,16 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
           {projects.map((p, i) => {
             const primary = p.links.live ?? p.links.repo;
             return (
-              <li class:list={["project", { "project--wide": i === wideIndex }]} id={`project-${p.id}`}>
+              <li class:list={["project", { "project--wide": i === wideIndex, "project--end": i === endIndex }]} id={`project-${p.id}`}>
                 {p.image && (
                   <figure>
-                    <img src={p.image.src} alt={p.image.alt} width="1440" height="900" loading="lazy" decoding="async" />
+                    {primary ? (
+                      <a href={primary} rel="noopener" tabindex="-1">
+                        <img src={p.image.src} alt={p.image.alt} width="1440" height="900" loading="lazy" decoding="async" />
+                      </a>
+                    ) : (
+                      <img src={p.image.src} alt={p.image.alt} width="1440" height="900" loading="lazy" decoding="async" />
+                    )}
                   </figure>
                 )}
                 <h3>
