@@ -82,12 +82,12 @@
     "title": "About",
     "paragraphs": [
       "I'm from Belo Horizonte, Brazil.",
-      "My parents signed me up for a technical program alongside high school. I started reading about the field on my own. I loved it.",
-      "I want to be a reference in the dev scene someday."
+      "I found programming in a technical program, alongside high school. I kept reading about the field on my own, and it stuck.",
+      "I'm still studying and building. Someday, I'd like to be a reference in the dev scene."
     ],
     "outside": {
       "label": "Outside code",
-      "text": "Family, friends, studying, volunteering, soccer. It's a website, not a biography."
+      "text": "Family, friends, studying, volunteering, soccer."
     }
   },
   "contact": {

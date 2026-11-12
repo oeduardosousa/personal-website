@@ -189,10 +189,32 @@ const dynJson = JSON.stringify(dyn).replaceAll("<", String.fromCharCode(92) + "u
       <div class="wrap grid">
         <div class="about__side">
           <h2 id="about-title" class="about__title" data-split>{t.about.title}</h2>
+          {/* Decorative: someone typing, a small terminal filling up. CSS animation, transform and opacity only. */}
+          <svg class="typist" viewBox="0 0 320 220" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-reveal>
+            <g class="typist__term">
+              <rect x="196" y="8" width="112" height="80" rx="8" class="typist__panel"></rect>
+              <path d="M210 22l5 4-5 4" class="typist__prompt"></path>
+              <rect x="222" y="24.5" width="52" height="3" rx="1.5" class="typist__line typist__line--1"></rect>
+              <rect x="210" y="39.5" width="76" height="3" rx="1.5" class="typist__line typist__line--2"></rect>
+              <rect x="210" y="54.5" width="44" height="3" rx="1.5" class="typist__line typist__line--3"></rect>
+              <rect x="210" y="66" width="5" height="10" class="typist__caret"></rect>
+            </g>
+            {/* desk and laptop */}
+            <path d="M156 150h150M292 150v64"></path>
+            <path d="M200 146h52l16-46"></path>
+            {/* chair */}
+            <path d="M84 108l8 64h46M114 172v36M96 208h38"></path>
+            {/* legs, body, head */}
+            <path d="M124 164h50l5 50h18"></path>
+            <path d="M112 96c-9 22-11 50-6 72h28c3-24 1-50-6-72z" class="typist__body"></path>
+            <circle cx="122" cy="68" r="18" class="typist__body"></circle>
+            <path d="M126 106l22 32l52 6" class="typist__arm typist__arm--back"></path>
+            <path d="M122 106l22 34l58 4" class="typist__arm"></path>
+          </svg>
         </div>
         <div class="about__body stack measure">
-          {t.about.paragraphs.map(pub).filter(Boolean).map((text) => <p data-reveal>{text}</p>)}
-          <p data-reveal><span class="label muted">{t.about.outside.label}</span><br />{t.about.outside.text}</p>
+          {t.about.paragraphs.map(pub).filter(Boolean).map((text, i) => <p class:list={{ about__lead: i === 0 }} data-reveal>{text}</p>)}
+          <p class="about__outside" data-reveal><span class="label muted">{t.about.outside.label}</span><br />{t.about.outside.text}</p>
         </div>
       </div>
     </section>
