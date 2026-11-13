@@ -34,6 +34,7 @@ for (const p of projects) {
   if (ids.has(p.id)) errors.push(`${where}: duplicate id`);
   ids.add(p.id);
   if (!p.title) errors.push(`${where}: missing title`);
+  else if (typeof p.title !== "string" && (!p.title.en || !p.title.pt)) errors.push(`${where}: title needs en and pt`);
   if (!p.summary?.en || !p.summary?.pt) errors.push(`${where}: summary needs en and pt`);
   if (p.image) {
     if (!p.image.src) errors.push(`${where}: image.src missing`);

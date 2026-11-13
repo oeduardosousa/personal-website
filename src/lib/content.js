@@ -33,7 +33,7 @@ export function getProjects(lang) {
     .filter((p) => p.published !== false)
     .map((p) => ({
       id: p.id,
-      title: p.title,
+      title: typeof p.title === "string" ? p.title : p.title[lang], // a plain string is the same in every language
       featured: p.featured === true,
       summary: p.summary[lang],
       tags: p.tags ?? [],

@@ -3,7 +3,10 @@
     "id": "real-estate",
     "published": true,
     "featured": true,
-    "title": "real-estate",
+    "title": {
+      "en": "Real Estate",
+      "pt": "Imobiliária"
+    },
     "summary": {
       "en": "A site for a real estate agency in Belo Horizonte. One view for buyers, one for the agency.",
       "pt": "Um site para uma imobiliária de Belo Horizonte. Uma visão para quem compra, outra para a imobiliária."
@@ -28,7 +31,10 @@
     "id": "devboard",
     "published": true,
     "featured": false,
-    "title": "devboard",
+    "title": {
+      "en": "Project Board",
+      "pt": "Painel de Projetos"
+    },
     "summary": {
       "en": "A personal project management dashboard. Create projects and tasks, track what's done, see the progress.",
       "pt": "Um painel pessoal de gerenciamento de projetos. Crie projetos e tarefas, marque o que acabou e veja o progresso."
@@ -54,7 +60,10 @@
     "id": "beauty-salon",
     "published": true,
     "featured": false,
-    "title": "beauty-salon",
+    "title": {
+      "en": "Beauty Salon",
+      "pt": "Salão de Beleza"
+    },
     "summary": {
       "en": "A beauty salon site with a client view and a staff view. All data is simulated in the browser.",
       "pt": "Um site de salão de beleza com visão da cliente e da equipe. Todos os dados são simulados no navegador."
@@ -79,7 +88,10 @@
     "id": "barber-shop-portfolio",
     "published": true,
     "featured": false,
-    "title": "barber-shop-portfolio",
+    "title": {
+      "en": "Barbershop",
+      "pt": "Barbearia"
+    },
     "summary": {
       "en": "A barbershop demo. Clients book a chair. Barbers see a day schedule with simulated times.",
       "pt": "Uma demo de barbearia. O cliente reserva uma cadeira. O barbeiro vê a agenda do dia, com horários simulados."
@@ -104,7 +116,10 @@
     "id": "advocacy",
     "published": true,
     "featured": false,
-    "title": "advocacy",
+    "title": {
+      "en": "Law Firm",
+      "pt": "Advocacia"
+    },
     "summary": {
       "en": "A concept site for a law firm. Six areas of law, plain language, one clear way to get in touch.",
       "pt": "Um site conceito para um escritório de advocacia. Seis áreas do direito, linguagem clara e um jeito simples de falar com o escritório."
@@ -129,7 +144,10 @@
     "id": "cine-scope",
     "published": true,
     "featured": false,
-    "title": "cine-scope",
+    "title": {
+      "en": "Movie Guide",
+      "pt": "Guia de Filmes"
+    },
     "summary": {
       "en": "A React guide for movie lovers to find their next binge-watch.",
       "pt": "Um guia em React para quem ama filmes achar a próxima maratona."
