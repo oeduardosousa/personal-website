@@ -1,6 +1,31 @@
+<div align="center">
+
 # oeduardosousa.com
 
-Personal site of Eduardo Sousa. Static [Astro](https://astro.build) site, no backend, no database, no tracking. Target host: Cloudflare Pages.
+**My personal website.** Who I am, what I build, and how to reach me.
+
+[![Visit the site](https://img.shields.io/badge/Visit-oeduardosousa.com-111?style=for-the-badge&logo=cloudflare&logoColor=white)](https://oeduardosousa.com)
+
+![Astro](https://img.shields.io/badge/Astro-BC52EE?style=flat-square&logo=astro&logoColor=white)
+![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=black)
+![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-F38020?style=flat-square&logo=cloudflare&logoColor=white)
+
+<img src="public/og.png" alt="Preview of oeduardosousa.com" width="820">
+
+</div>
+
+## Highlights
+
+- **Bilingual:** English and Brazilian Portuguese, with browser detection and a manual toggle.
+- **Data-driven projects:** adding a project takes one JSON entry and one image.
+- **Command palette** (`Ctrl/Cmd + K`) and a terminal line that reacts to your local time and return visits.
+- **Smooth, careful motion** with GSAP and Lenis, and full support for reduced motion.
+- **Works without JavaScript**, with storage blocked, and offline.
+- **Built for accessibility:** WCAG AA as the target, keyboard friendly, no tracking, no backend, no database.
+
+Static [Astro](https://astro.build) site, hosted on Cloudflare Pages. Below are the developer notes.
+
+---
 
 ```bash
 npm install
